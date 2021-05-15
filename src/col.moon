@@ -27,6 +27,14 @@ csv= (file)->
 -- Print something, then return it.
 say= (s,x) -> print(s,x) and x
 
+
+show: (t) ->
+    keys = [k for k in in pairs t when type(k)=="string" and not k\match"^_"]
+    table\sort keys
+    out=""
+    for k in *keys
+       out ..+ " {k} = {tostring(t[k])}"
+
 -- ----------------------------
 class Col
   new: (at=1,txt='') => 
@@ -38,6 +46,7 @@ class Col
      @\add1 x
 -- ---------------------------
 class Sym extends Col
+  __tostring: => show(@)
    new: (at,txt) =>
      super at,txt
      @all, @most, @mode = {}, 0, nil
@@ -57,6 +66,7 @@ class Skip extends Col
 -- ---------------------------
 -- Summarize numeric columns
 class Num extends Col
+  __tostring: => show(@)
   new: (at,txt) =>
     @mu,@sd,@m2,@lo,@hi = 0,0,0,1E32,-1E32
     @all = {}
@@ -71,6 +81,7 @@ class Num extends Col
 
 ------------------------------
 class Cols
+  __tostring: => show(@)
   new:(t)  =>
     @xs,  @ys, @all, @klass = {},{},{},nil
     for at,txt in pairs t do @\new1 at,txt
@@ -89,6 +100,7 @@ class Cols
 
 ------------------------------
 class Data
+  __tostring: => show(@)
   new:(a={}) =>
     @rows, @cols = {}, nil
     for x in *a do @\add x

@@ -4,7 +4,6 @@ title: "eg.moon"
 
 moon=require "moon"
 col=require "col"
-lib=require "liblua"
 eg={}
 eg.all= -> [f() for k,f in pairs eg when k!="all"]
 eg.sym = ->
