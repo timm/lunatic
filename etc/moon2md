@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 doc() { gawk '
 BEGIN {print "# '$1' " }
 last { print last }
@@ -19,6 +18,7 @@ END {
   if(last) print last
   if (!com) print "```"} ' $1
 }
+
 cd $1
 for f in *.moon;do
   g=${f%.moon}
