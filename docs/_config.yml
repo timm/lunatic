@@ -1,3 +1,4 @@
 theme: jekyll-theme-minimal
-title: LUNAR
-description: fun fun fun
+title: Lunar
+description: "Exploring space (using data mining and optimization)"
+logo: /assets/img/moon.png 
