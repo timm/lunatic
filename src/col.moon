@@ -1,4 +1,7 @@
---
+#!/usr/bin/env moon
+-- vim: ts=2 sw=2 et :
+
+-- needs
 moon=require "moon"
 p=moon.p
 

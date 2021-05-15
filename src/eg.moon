@@ -1,4 +1,6 @@
 #!/usr/bin/env moon
+-- vim: ts=2 sw=2 et :
+
 moon=require "moon"
 col=require "col"
 lib=require "liblua"
@@ -13,7 +15,7 @@ eg.sym = ->
   print s\ent()
 
 eg.cols = ->
-  it = col.Cols {"A?" ,"B","C-"}
+  it = col.Cols {"A?", "B","C-"}
   assert #it.ys == 1
   assert it.ys[1].w == -1
   assert #it.xs == 1
