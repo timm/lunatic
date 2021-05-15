@@ -20,13 +20,13 @@
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
+        <p>{{ site.description | default: site.github.project_tagline }}
         <br><a href="https://zenodo.org/badge/latestdoi/367550995"><img src="https://zenodo.org/badge/367550995.svg" alt="DOI"></a>
             <img src="https://travis-ci.com/timm/lunar.svg?branch=main">
             <img src="https://img.shields.io/badge/language-moonscript,bash-orange">
             <img src="https://img.shields.io/badge/purpose-ai%20,%20se-blueviolet">
             <img src="https://img.shields.io/badge/license-mit-lightgrey">
-        <br>
+        </p>
 
         {% if site.github.is_project_page %}
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
