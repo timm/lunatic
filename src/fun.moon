@@ -50,6 +50,6 @@ say= (s,x) -> print(s,x) and x
 show: (t,   out="") ->
   return tostring(t) if atom(t)
   public: (s) -> type(s)=="string" and not s\match"^_"
-  for k in *sorted([k for k in in pairs t when public s])
+  for k in *sorted([k for k in in pairs t when public k])
     v = t[k]
     out ..= (type(v) != "number" and " :{k} {show(v)}" or show(v))
