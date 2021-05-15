@@ -37,12 +37,11 @@ atom: (x) ->
 
 -- ### Array Util
 -- Arrays have  indexes `1...max`.
-
---- ### Table Utils
+-- ### Table Utils
 -- Tables have arbitrary indexes
 sorted: (t,f= (x,y) -> x < y) = table.sort(t,f) or t
 
---- ### Print utils
+-- ### Print utils
 -- Print something, then return it.
 say= (s,x) -> print(s,x) and x
 
@@ -54,6 +53,3 @@ show: (t,   out="") ->
   for k in *sorted([k for k in in pairs t when public s])
     v = t[k]
     out ..= (type(v) != "number" and " :{k} {show(v)}" or show(v))
-      
-
-

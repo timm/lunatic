@@ -54,18 +54,14 @@ atom: (x) ->
 
 ### Array Util
 Arrays have  indexes `1...max`.
-
-```moonscript
-```
-
---- ### Table Utils
+### Table Utils
 Tables have arbitrary indexes
 
 ```moonscript
 sorted: (t,f= (x,y) -> x < y) = table.sort(t,f) or t
 ```
 
---- ### Print utils
+### Print utils
 Print something, then return it.
 
 ```moonscript
