@@ -19,4 +19,4 @@ install:
 
 script:
   - cd src
-  - echo hello
+  - moon eg.lua
