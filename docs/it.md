@@ -1,4 +1,3 @@
-# it.moon 
 moon=require("moon")
 p=moon.p
 f = =>

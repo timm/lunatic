@@ -1,4 +1,3 @@
-# eg.moon 
 #!/usr/bin/env moon
 moon=require "moon"
 col=require "col"
