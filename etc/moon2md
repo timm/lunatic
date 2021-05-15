@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+
+doc() { gawk '
+BEGIN {print "# '$1' " }
+last { print last }
+{ if ($0 ~ /^--/) {
+    if(!com) print  pre;
+    pre="```\n"
+    com=1 
+  } else {
+    if(com) print "\n```moonscript"
+    com=0
+  }
+  sub(/^--[ ]*/,"")
+  sub(/^[ \t]*$/,"")
+  last = $0}
+END {
+  if(last) print last
+  if (!com) print "```"} ' $1
+}
+cd $1
+for f in *.moon;do
+  g=${f%.moon}
+  doc $f > ../docs/${g}.md
+done

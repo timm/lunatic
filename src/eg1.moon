@@ -1,0 +1,3 @@
+require "eg"
+
+p(Num!)

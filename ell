@@ -1,0 +1,14 @@
+clear
+tput bold; tput setaf 6; cat <<'EOF'
+  ,-,      
+ /.(         “Be the moon and inspire people, 
+ \ {          even when you're far from full.” 
+  `-`  hjw    -- K. Tolnoe
+
+EOF
+tput sgr0
+
+Ell=$(cd $( dirname "${BASH_SOURCE[0]}" ) && pwd )
+
+
+Ell="$Ell" bash --init-file $Ell/etc/ellrc -i

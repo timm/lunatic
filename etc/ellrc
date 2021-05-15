@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+############# assert dirs exist
+mkdir -p $Ell/docs
+mkdir -p $Ell/etc
+mkdir -p $Ell/src
+
+alias gp="git add *;git commit -am save;git push;git status"
+alias ls="ls -G"
+alias tmux="$(which tmux) -f $Ell/etc/tmux-conf "
+alias vi="vim -u $Ell/etc/vimrc "
+alias vims="vim +PluginInstall +qall"         
+
+docs() { $Ell/etc/moon2md $Ell/src; }
+
+here() { cd $1; basename `pwd`; }
+
+PROMPT_COMMAND='echo -ne "🌜 $(git branch 2>/dev/null | grep '^*' | colrm 1 2):";PS1="$(here ..)/$(here .):\!\e[m ▶ "'
+
