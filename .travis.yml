@@ -9,7 +9,11 @@ sudo: true
 
 
 install:
-  - sudo apt-get install -y lua
+  - curl -R -O http://www.lua.org/ftp/lua-5.4.3.tar.gz
+  - tar zxf lua-5.4.3.tar.gz
+  - cd lua-5.4.3
+  - make linux test
+  - cd ..
   - sudo apt-get install -y luarocks
   - luarocks install moonscript --dev
 
