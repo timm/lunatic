@@ -1,14 +1,22 @@
+---
+title: Blogging Like a Hacker
+---
+
 # col.moon 
 
+Text asas sd a  as asasdasds ds
 
-```moonscript
+
+```moon
 moon=require "moon"
 p=moon.p
 ```
 
+adadas
+
 -----------------------------------------
 
-```moonscript
+```moon
 weight= (s)-> if s\find"-" then -1  else 1
 isKlass=(s)-> s\find"!"
 isSkip= (s)-> s\find"?"
@@ -20,7 +28,7 @@ isX=    (s)-> not isY s
 Read a comma operated file, kill space and comments,
 convert some strings to numerics. 
 
-```moonscript
+```moon
 csv= (file)->
   stream = io.input(file)
   =>
@@ -33,13 +41,13 @@ csv= (file)->
 
 Print something, then return it.
 
-```moonscript
+```moon
 say= (s,x) -> print(s,x) and x
 ```
 
 ----------------------------
 
-```moonscript
+```moon
 class Col
   new: (at=1,txt='') => 
     @n, @at, @txt, @w = 1, at, txt, weight(txt)
@@ -52,7 +60,7 @@ class Col
 
 ---------------------------
 
-```moonscript
+```moon
 class Sym extends Col
    new: (at,txt) =>
      super at,txt
@@ -70,7 +78,7 @@ class Sym extends Col
 ---------------------------
 Anything sent to `Skip` just gets ignored.
 
-```moonscript
+```moon
 class Skip extends Col
   add1: (x) => x
 ```
@@ -78,7 +86,7 @@ class Skip extends Col
 ---------------------------
 Summarize numeric columns
 
-```moonscript
+```moon
 class Num extends Col
   new: (at,txt) =>
     @mu,@sd,@m2,@lo,@hi = 0,0,0,1E32,-1E32
@@ -95,7 +103,7 @@ class Num extends Col
 
 ----------------------------
 
-```moonscript
+```moon
 class Cols
   new:(t)  =>
     @xs,  @ys, @all, @klass = {},{},{},nil
@@ -116,7 +124,7 @@ class Cols
 
 ----------------------------
 
-```moonscript
+```moon
 class Data
   new:(a={}) =>
     @rows, @cols = {}, nil
@@ -132,6 +140,6 @@ class Data
 
 ----------------------------------
 
-```moonscript
+```moon
 :csv, :Data, :Cols,:Sym, :Skip, :Num
 ```
