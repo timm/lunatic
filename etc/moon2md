@@ -14,7 +14,7 @@ last { print last }
     if(com) print "\n```moonscript"
     com=0
   }
-  sub(/^--[ ]*/,"")
+  sub(/^--[ ]+,"")
   sub(/^[ \t]*$/,"")
   last = $0}
 END {
