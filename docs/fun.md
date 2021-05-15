@@ -3,14 +3,15 @@ title: "fun.moon"
 ---
 
 
-## Misc Utils
+Misc utilities.
 All this code get loaded into the global space
 
 ```moonscript
 export *
 ```
 
-### Data header utils
+## Data header utils
+### weight, is?
 
 ```moonscript
 weight= (s)-> if s\find"-" then -1  else 1
@@ -21,7 +22,8 @@ isY=    (s)-> s\find"+" or s\find"-" or isKlass s
 isX=    (s)-> not isY s
 ```
 
-### CSV reader
+## File utils
+### Csv
 Read a comma operated file, kill space and comments,
 convert some strings to numerics. 
 
@@ -36,13 +38,15 @@ csv= (file)->
       io.close(stream) and nil
 ```
 
-### Meta functions
+## Meta functions
+### same
 Do nothing, return something
 
 ```moonscript
 same: (x) -> x
 ```
 
+### atom
 Return `true`  if not a table
 
 ```moonscript
@@ -52,22 +56,25 @@ atom: (x) ->
   return false
 ```
 
-### Array Util
+## Array Util
 Arrays have  indexes `1...max`.
-### Table Utils
+## Table Utils
+### sorted
 Tables have arbitrary indexes
 
 ```moonscript
 sorted: (t,f= (x,y) -> x < y) = table.sort(t,f) or t
 ```
 
-### Print utils
+## Print utils
+### say
 Print something, then return it.
 
 ```moonscript
 say= (s,x) -> print(s,x) and x
 ```
 
+### show
 Print a table, keys sorted alphabetically, ignoring
 private keys.
 

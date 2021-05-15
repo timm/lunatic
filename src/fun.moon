@@ -1,11 +1,12 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
--- ## Misc Utils
+-- Misc utilities.
 -- All this code get loaded into the global space
 export *
 
--- ### Data header utils
+-- ## Data header utils
+-- ### weight, is?
 weight= (s)-> if s\find"-" then -1  else 1
 isKlass=(s)-> s\find"!"
 isSkip= (s)-> s\find"?"
@@ -13,7 +14,8 @@ isNum=  (s)-> s\match"^[A-Z]"
 isY=    (s)-> s\find"+" or s\find"-" or isKlass s 
 isX=    (s)-> not isY s
 
--- ### CSV reader
+-- ## File utils
+-- ### Csv
 -- Read a comma operated file, kill space and comments,
 -- convert some strings to numerics. 
 csv= (file)->
@@ -25,26 +27,31 @@ csv= (file)->
     else
       io.close(stream) and nil
 
--- ### Meta functions
+-- ## Meta functions
+-- ### same
 -- Do nothing, return something
 same: (x) -> x
 
+-- ### atom
 -- Return `true`  if not a table
 atom: (x) -> 
   return true if type(x)=="number" or type(x)=="string"
   return true if x=={} or x==true or x=false or x=nil
   return false
 
--- ### Array Util
+-- ## Array Util
 -- Arrays have  indexes `1...max`.
--- ### Table Utils
+-- ## Table Utils
+-- ### sorted
 -- Tables have arbitrary indexes
 sorted: (t,f= (x,y) -> x < y) = table.sort(t,f) or t
 
--- ### Print utils
+-- ## Print utils
+-- ### say
 -- Print something, then return it.
 say= (s,x) -> print(s,x) and x
 
+-- ### show
 -- Print a table, keys sorted alphabetically, ignoring
 -- private keys.
 show: (t,   out="") ->
