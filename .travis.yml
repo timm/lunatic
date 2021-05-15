@@ -19,4 +19,4 @@ install:
 
 script:
   - cd src
-  - moon eg.lua
+  - moon eg.moon
