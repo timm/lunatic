@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 doc() { gawk '
+BEGIN {print "---\ntitle: \"'$1'\"\n---\n"}
 last { print last }
 { if ($0 ~ /^--/) {
     if(!com) print  pre;
