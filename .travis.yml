@@ -1,0 +1,18 @@
+
+language: c
+
+
+os:
+  - linux
+
+sudo: true
+
+
+install:
+  - sudo apt-get install -y lua
+  - sudo apt-get install -y luarocks
+  - luarocks install moonscript --dev
+
+script:
+  - cd src
+  - echo hello
