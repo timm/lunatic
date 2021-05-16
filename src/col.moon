@@ -27,10 +27,7 @@ class Sym extends Col
      @most,@mode = @all[x],x if @all[x] > @most
    ent: =>
      e=0
-     for _,v in pairs @all
-       inc = v/@n*math.log(v/@n)/math.log(2)
-       print(v, @n, inc)
-       e -= inc
+     for _,v in pairs @all do e -= v/@n*math.log(v/@n)/math.log(2)
      e
    mid: => @mode
    spread: => @\ent!
