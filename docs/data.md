@@ -6,6 +6,11 @@ title: "data.moon"
 Tools for storing rows of data, summarized into columns.
 
 ```moonscript
+```
+
+Requires:
+
+```moonscript
 require "fun"
 is=require "is"
 import Col, Num, Sym from require "col"
@@ -26,19 +31,17 @@ stores them in different kinds of arrays.
 ```moonscript
 class Cols
   new:(t)  =>
-    @xs,  @ys, @all, @klass = {},{},{},nil
+    @all, @xs,  @ys, @klass = {},{},{},nil
     for at,txt in pairs t do @\new1 at,txt
   new1: (at,txt) =>
     what = txt\find"?" and Skip or (is.num(txt) and Num or Sym)
-    new  = what(at,txt)
-    @all[#@all + 1] = new
-    if new.__class != Skip
-      if is.klass txt then @klass = new
-      if is.y     txt then @ys[#@ys + 1] = new
-      if is.x     txt then @xs[#@xs + 1] = new
-  add: (a) => 
-   for col in *@all do col\add a[col.at]
-   a
+    col  = what(at,txt)
+    @all[#@all + 1] = col
+    if col.__class != Skip
+      if is.klass txt then @klass = col
+      where = is.y(txt) and @ys or @xs
+      where[#where + 1] = col
+  summarize: (a) => [col\add a[col.at] for col in *@all]
 ```
 
 ## Data
@@ -49,12 +52,15 @@ class Data
   new:(a={}) =>
     @rows, @cols = {}, nil
     for x in *a do @\add x
-  add: (x) =>
-    return if #x==0
-    if @cols then @rows[#@rows+1]=@cols\add x else @cols= Cols x
+  add: (a) =>
+    return if #a==0
+    if @cols then
+      @cols\summarize a
+      @rows[#@rows+1]= a
+    else @cols = Cols a
   clone:(a={}) =>
-    out = Rows [col.txt for col in *@cols.all] 
-    for x in *a do out\add x
+    out = Data [col.txt for col in *@cols.all]
+    [out\add x for x in *a]
     out
 ```
 
