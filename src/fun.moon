@@ -32,15 +32,29 @@ csv= (file)->
 -- Do nothing, return something. 
 same= (x) -> x
 
+-- ### cli
+-- Given a table of functions, use information
+-- on the command like to decide which to run.
+-- "?" means list the options, `x` means run `x`
+-- otherwise, run all.
+
+cli= (t) ->
+  run = (x) -> print("-- "..x) or t[x]()
+  a = sorted [x for x,_ in pairs t]
+  if s = arg[1]
+    if s=="?" then [print(" - #{x}") for x in *a]
+    if all[s] then run s  
+  else
+    [run s for s in *a]
+
 -- ## Array Util
 -- Arrays have  indexes `1...max`.
 -- ## Table Utils
--- ### sorted
 -- Tables have arbitrary indexes
+-- ### sorted
 sorted= (t,f= (x,y) -> x < y) -> table.sort(t,f) or t
 
 -- ## Print utils
-
 -- ### say
 -- Convert a table to a string, keys sorted alphabetically, 
 -- ignoring private keys.

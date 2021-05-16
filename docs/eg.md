@@ -22,11 +22,13 @@ eg.data = ->
   [t\add(x) for x in csv "../etc/data/auto93.csv"]
   print("data",t.rows[#t.rows][1])
   print(t.cols.all)
-run= (s) ->
-  walk= (x) -> print("-- "..x) or eg[x]()
-  egs = sorted [x for x,_ in pairs eg]
-  if not s  then return [walk(s) for s in *egs]
-  if s=="?" then [print("./eg.moon #{x}") for x in *egs]
-  if eg[s]  then walk(s) else print("W> unknown: '#{s}'")
-run arg[1]
+cli= (all) ->
+  walk = (x) -> print("-- "..x) or all[x]()
+  a = sorted [x for x,_ in pairs all]
+  if s = arg[1]
+    if s=="?" then [print(" - #{x}") for x in *a]
+    if all[s] then walk(s) 
+  else
+    [walk(s) for s in *a]
+cli eg
 ```
