@@ -15,6 +15,7 @@ alias vims="vim +PluginInstall +qall"
 docs() { $Ell/etc/moon2md $Ell/src; }
 here() { cd $1; basename `pwd`; }
 aliases() {
+ cd $1
  for f in *.moon; do
    if grep -qs "^#!\/usr\/bin\/env" $f; then
      chmod +x $f
