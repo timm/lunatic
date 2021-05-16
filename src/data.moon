@@ -26,8 +26,8 @@ class Cols
     @all[#@all + 1] = col
     if col.__class != Skip
       if is.klass txt then @klass = col
-      if is.y     txt then @ys[#@ys + 1] = col
-      if is.x     txt then @xs[#@xs + 1] = col
+      where = is.y(txt) and @ys or @xs
+      where[#where + 1] = col
   summarize: (a) => [col\add a[col.at] for col in *@all]
 
 -- ## Data
