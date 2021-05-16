@@ -29,22 +29,15 @@ csv= (file)->
 
 -- ## Meta functions
 -- ### same
--- Do nothing, return something
-same: (x) -> x
-
--- ### atom
--- Return `true`  if not a table
-atom: (x) -> 
-  return true if type(x)=="number" or type(x)=="string"
-  return true if x=={} or x==true or x=false or x=nil
-  return false
+-- Do nothing, return something. 
+same= (x) -> x
 
 -- ## Array Util
 -- Arrays have  indexes `1...max`.
 -- ## Table Utils
 -- ### sorted
 -- Tables have arbitrary indexes
-sorted: (t,f= (x,y) -> x < y) = table.sort(t,f) or t
+sorted= (t,f= (x,y) -> x < y) -> table.sort(t,f) or t
 
 -- ## Print utils
 -- ### say
@@ -54,9 +47,10 @@ say= (s,x) -> print(s,x) and x
 -- ### show
 -- Print a table, keys sorted alphabetically, ignoring
 -- private keys.
-show: (t,   out="") ->
-  return tostring(t) if atom(t)
+show= (t,   out="") ->
   public: (s) -> type(s)=="string" and not s\match"^_"
-  for k in *sorted([k for k in in pairs t when public k])
+  atom:   (x) -> x=={} or type(x) != "table"
+  return tostring(t) if atom(t)
+  for k in *sorted([k for k in pairs t when public k]) 
     v = t[k]
     out ..= (type(v) != "number" and " :{k} {show(v)}" or show(v))

@@ -3,51 +3,14 @@ title: "col.moon"
 ---
 
 
-needs
+Tools for storing data.
 
 ```moonscript
-moon=require "moon"
-p=moon.p
+require "fun"
 ```
 
------------------------------------------
-
-```moonscript
-weight= (s)-> if s\find"-" then -1  else 1
-isKlass=(s)-> s\find"!"
-isSkip= (s)-> s\find"?"
-isNum=  (s)-> s\match"^[A-Z]"
-isY=    (s)-> s\find"+" or s\find"-" or isKlass s 
-isX=    (s)-> not isY s
-```
-
-Read a comma operated file, kill space and comments,
-convert some strings to numerics. 
-
-```moonscript
-csv= (file)->
-  stream = io.input(file)
-  =>
-    if x = io.read()
-      x = x\gsub("[\t\r ]+","")\gsub("#.*","")
-      [(tonumber(y) or y) for y in x\gmatch("([^,]+)")]
-    else
-      io.close(stream) and nil
-```
-
-Print something, then return it.
-
-```moonscript
-say= (s,x) -> print(s,x) and x
-show: (t) ->
-    keys = [k for k in in pairs t when type(k)=="string" and not k\match"^_"]
-    table\sort keys
-    out=""
-    for k in *keys
-       out ..+ " {k} = {tostring(t[k])}"
-```
-
-----------------------------
+## Col
+Generic stuff for all columns.
 
 ```moonscript
 class Col
@@ -60,7 +23,7 @@ class Col
      @\add1 x
 ```
 
----------------------------
+## `Sym`bols summarize a column of symbols.
 
 ```moonscript
 class Sym extends Col
@@ -78,7 +41,7 @@ class Sym extends Col
    spread: => @\ent!
 ```
 
----------------------------
+## Skip
 Anything sent to `Skip` just gets ignored.
 
 ```moonscript
@@ -86,7 +49,7 @@ class Skip extends Col
   add1: (x) => x
 ```
 
----------------------------
+## Num
 Summarize numeric columns
 
 ```moonscript
@@ -105,7 +68,9 @@ class Num extends Col
     @hi  = x if x > @hi
 ```
 
-------------------------------
+## Cols
+Manager for columns. Creates the right kind of columns, 
+stores them in different kinds of arrays.
 
 ```moonscript
 class Cols
@@ -127,7 +92,8 @@ class Cols
    a
 ```
 
-------------------------------
+## Data
+Stores data in `rows`, and summarizes that data in  `Col`umns.
 
 ```moonscript
 class Data
@@ -144,8 +110,9 @@ class Data
     out
 ```
 
-------------------------------------
+## Exports
+Just the stuff anyone else might need.
 
 ```moonscript
-:csv, :Data, :Cols,:Sym, :Skip, :Num
+:Data, :Sym,  :Num
 ```

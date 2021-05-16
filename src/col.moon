@@ -1,41 +1,11 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
--- needs
-moon=require "moon"
-p=moon.p
+-- Tools for storing data.
+require "fun"
 
--- -----------------------------------------
-weight= (s)-> if s\find"-" then -1  else 1
-isKlass=(s)-> s\find"!"
-isSkip= (s)-> s\find"?"
-isNum=  (s)-> s\match"^[A-Z]"
-isY=    (s)-> s\find"+" or s\find"-" or isKlass s 
-isX=    (s)-> not isY s
-
--- Read a comma operated file, kill space and comments,
--- convert some strings to numerics. 
-csv= (file)->
-  stream = io.input(file)
-  =>
-    if x = io.read()
-      x = x\gsub("[\t\r ]+","")\gsub("#.*","")
-      [(tonumber(y) or y) for y in x\gmatch("([^,]+)")]
-    else
-      io.close(stream) and nil
-
--- Print something, then return it.
-say= (s,x) -> print(s,x) and x
-
-
-show: (t) ->
-    keys = [k for k in in pairs t when type(k)=="string" and not k\match"^_"]
-    table\sort keys
-    out=""
-    for k in *keys
-       out ..+ " {k} = {tostring(t[k])}"
-
--- ----------------------------
+-- ## Col
+-- Generic stuff for all columns.
 class Col
   new: (at=1,txt='') => 
     @n, @at, @txt, @w = 1, at, txt, weight(txt)
@@ -44,7 +14,8 @@ class Col
    if x != "?" 
      @n += 1
      @\add1 x
--- ---------------------------
+
+-- ## `Sym`bols summarize a column of symbols.
 class Sym extends Col
   __tostring: => show(@)
    new: (at,txt) =>
@@ -58,12 +29,13 @@ class Sym extends Col
      e
    mid: => @mode
    spread: => @\ent!
--- ---------------------------
+
+-- ## Skip
 -- Anything sent to `Skip` just gets ignored.
 class Skip extends Col
   add1: (x) => x
 
--- ---------------------------
+-- ## Num
 -- Summarize numeric columns
 class Num extends Col
   __tostring: => show(@)
@@ -79,7 +51,9 @@ class Num extends Col
     @lo  = x if x < @lo
     @hi  = x if x > @hi
 
-------------------------------
+-- ## Cols
+-- Manager for columns. Creates the right kind of columns, 
+-- stores them in different kinds of arrays.
 class Cols
   __tostring: => show(@)
   new:(t)  =>
@@ -98,7 +72,8 @@ class Cols
    for col in *@all do col\add a[col.at]
    a
 
-------------------------------
+-- ## Data
+-- Stores data in `rows`, and summarizes that data in  `Col`umns.
 class Data
   __tostring: => show(@)
   new:(a={}) =>
@@ -112,5 +87,6 @@ class Data
     for x in *a do out\add x
     out
 
-------------------------------------
-:csv, :Data, :Cols,:Sym, :Skip, :Num
+-- ## Exports
+-- Just the stuff anyone else might need.
+:Data, :Sym,  :Num
