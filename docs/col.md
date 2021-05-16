@@ -18,9 +18,9 @@ class Col
     @n, @at, @txt, @w = 1, at, txt, weight(txt)
   adds: (a) => [@\add(x) for x in *a]
   add:  (x) =>
-   if x != "?" 
-     @n += 1
-     @\add1 x
+    if x != "?" 
+      @n += 1
+      @\add1 x
 ```
 
 ## Sym
@@ -28,7 +28,6 @@ Summarize a column of symbols.
 
 ```moonscript
 class Sym extends Col
-  __tostring: => show(@)
    new: (at,txt) =>
      super at,txt
      @all, @most, @mode = {}, 0, nil
@@ -47,7 +46,6 @@ Summarize numeric columns
 
 ```moonscript
 class Num extends Col
-  __tostring: => show(@)
   new: (at,txt) =>
     @mu,@sd,@m2,@lo,@hi = 0,0,0,1E32,-1E32
     @all = {}

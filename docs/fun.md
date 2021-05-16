@@ -67,20 +67,21 @@ ignoring private keys.
 
 ```moonscript
 say= (t) ->
-  public= (s) -> type(s)=="string" and not s\match"^_"
-  return tostring(t) if t=={} or type(t) != "table"
-  out = (if t.__class then t.__class.__name else "").."{"
-  sep=""
-  for k in *sorted([k for k in pairs t when public k])
-    v = t[k]
-    out ..= sep..(type(k) != "number" and ":#{k} #{say(v)}" or say(v))
-    sep = " "
+  return tostring(t) if (t=={} or type(t) != "table")
+  pub= (s) -> type(s)=="string" and not s\match"^_"
+  out= (if t.__class then t.__class.__name else "").."{"
+  sep= ""
+  for k in *sorted [k for k,_ in pairs t when pub k]
+    v     = t[k]
+    tmp   = (type(k) !="number" and ":#{k} #{say(v)}") or say(v)
+    out ..= sep..tmp
+    sep   = " "
   out.."}"
 ```
 
-### sayln
+### said
 Print a table, as a string
 
 ```moonscript
-sayln= (x) -> print(say(x))
+said= (x) -> print(say(x))
 ```
