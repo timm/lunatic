@@ -25,8 +25,10 @@ class Sym extends Col
    add1: (x) =>
      @all[x] = (@all[x] or 0) + 1
      @most,@mode = @all[x],x if @all[x] > @most
-   ent: (    e=0) =>
-     for _,v in pairs @all do e -= v/@n*math.log v/@n,2
+   ent: =>
+     e=0
+     for _,v in pairs @all
+       e -= v/@n*math.log(v/@n,2)
      e
    mid: => @mode
    spread: => @\ent!
