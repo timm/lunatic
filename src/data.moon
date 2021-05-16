@@ -25,7 +25,6 @@ class Cols
       if isKlass txt then @klass = new
       if isY     txt then @ys[#@ys + 1] = new
       if isX     txt then @xs[#@xs + 1] = new
-    new
   add: (a) => 
    for col in *@all do col\add a[col.at]
    a
