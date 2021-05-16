@@ -11,7 +11,8 @@ eg.sym = ->
   s=Sym!
   s\adds {"a", "a", "a", "a", "b", "b", "c"}
   assert 4==s.all.a
-  assert 1.378 <= s\ent() and s\ent() <=1.38
+  e = s\ent()
+  assert 1.378  <= e and  e <=1.38
 
 eg.num = ->
   n=Num!
