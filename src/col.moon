@@ -3,12 +3,13 @@
 
 -- Tools for summarizing data.
 require "fun"
+is=require "is"
 
 -- ## Col
 -- Generic stuff for all columns.
 class Col
   new: (at=1,txt='') => 
-    @n, @at, @txt, @w = 1, at, txt, weight(txt)
+    @n, @at, @txt, @w = 1, at, txt, is.weighted(txt)
   adds: (a) => [@\add(x) for x in *a]
   add:  (x) =>
     if x != "?" 

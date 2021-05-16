@@ -26,13 +26,4 @@ eg.data = ->
   print("data",t.rows[#t.rows][1])
   print(t.cols.all)
   
-cli= (all) ->
-  walk = (x) -> print("-- "..x) or all[x]()
-  a = sorted [x for x,_ in pairs all]
-  if s = arg[1]
-    if s=="?" then [print(" - #{x}") for x in *a]
-    if all[s] then walk(s) 
-  else
-    [walk(s) for s in *a]
-
 cli eg

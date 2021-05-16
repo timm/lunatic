@@ -3,7 +3,8 @@
 
 -- Tools for storing rows of data, summarized into columns.
 require "fun"
-import Col, Num, Sym from require("col")
+is=require "is"
+import Col, Num, Sym from require "col"
 
 -- ## Skip
 -- Anything sent to `Skip` just gets ignored.
@@ -18,13 +19,13 @@ class Cols
     @xs,  @ys, @all, @klass = {},{},{},nil
     for at,txt in pairs t do @\new1 at,txt
   new1: (at,txt) =>
-    what = txt\find"?" and Skip or (isNum(txt) and Num or Sym)
+    what = txt\find"?" and Skip or (is.num(txt) and Num or Sym)
     new  = what(at,txt)
     @all[#@all + 1] = new
     if new.__class != Skip
-      if isKlass txt then @klass = new
-      if isY     txt then @ys[#@ys + 1] = new
-      if isX     txt then @xs[#@xs + 1] = new
+      if is.klass txt then @klass = new
+      if is.y     txt then @ys[#@ys + 1] = new
+      if is.x     txt then @xs[#@xs + 1] = new
   add: (a) => 
    for col in *@all do col\add a[col.at]
    a

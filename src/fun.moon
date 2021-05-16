@@ -1,18 +1,8 @@
-#!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
 -- Misc utilities.
 -- All this code get loaded into the global space
 export *
-
--- ## Data header utils
--- ### weight, is?
-weight= (s)-> if s\find"-" then -1  else 1
-isKlass=(s)-> s\find"!"
-isSkip= (s)-> s\find"?"
-isNum=  (s)-> s\match"^[A-Z]"
-isY=    (s)-> s\find"+" or s\find"-" or isKlass s 
-isX=    (s)-> not isY s
 
 -- ## File utils
 -- ### Csv
@@ -42,12 +32,13 @@ cli= (t) ->
   run = (x) -> print("-- "..x) or t[x]()
   a = sorted [x for x,_ in pairs t]
   if s = arg[1]
-    if s=="?" then [print(" - #{x}") for x in *a]
-    if all[s] then run s  
+    if s=="?" [print(" - #{x}") for x in *a]
+    else
+      if t[s] then run(s) else print("?? Unknown '#{s}'")
   else
     [run s for s in *a]
 
--- ## Array Util
+-- ## Array Utils
 -- Arrays have  indexes `1...max`.
 -- ## Table Utils
 -- Tables have arbitrary indexes

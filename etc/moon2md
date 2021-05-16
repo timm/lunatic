@@ -2,8 +2,8 @@
 
 doc() { gawk '
 BEGIN {print "---\ntitle: \"'$1'\"\n---\n"}
-!last && /#!\/usr\/bin/ { next }
-!last && /--[ \t]*vim/  { next }
+/^#!\/usr\/bin/ { next }
+/^-- vim: /     { next }
 
 last { print last }
 { if ($0 ~ /^--/) {

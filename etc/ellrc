@@ -4,6 +4,7 @@
 mkdir -p $Ell/docs
 mkdir -p $Ell/etc
 mkdir -p $Ell/src
+mkdir -p $Ell/tests
 
 alias gp="git add *;git commit -am save;git push;git status"
 alias ls="ls -G"
@@ -12,8 +13,24 @@ alias vi="vim -u $Ell/etc/vimrc "
 alias vims="vim +PluginInstall +qall"         
 
 docs() { $Ell/etc/moon2md $Ell/src; }
-
 here() { cd $1; basename `pwd`; }
+aliases() {
+ cd $1
+ for f in *.moon; do
+   if grep -qs "^#!\/usr\/bin\/env" $f; then
+     eval "alias ${f%.moon}=\"moon $f\""
+  fi
+ done
+ cd - > /dev/null
+}
+
+aliases $Ell/src
+aliases $Ell/tests
 
 PROMPT_COMMAND='echo -ne "🌜 $(git branch 2>/dev/null | grep '^*' | colrm 1 2):";PS1="$(here ..)/$(here .):\!\e[m ▶ "'
+
+tput bold; tput setaf 0
+alias
+tput sgr0
+
 
