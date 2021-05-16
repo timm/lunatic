@@ -28,7 +28,7 @@ class Sym extends Col
    ent: =>
      e=0
      for _,v in pairs @all
-       inc = v/@n*math.log(v/@n,2)
+       inc = v/@n*math.log(v/@n)/math.log(2)
        print(v, @n, inc)
        e -= inc
      e
