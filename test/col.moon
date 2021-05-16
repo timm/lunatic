@@ -12,7 +12,7 @@ eg.sym = ->
   s\adds {"a", "a", "a", "a", "b", "b", "c"}
   assert 4==s.all.a
   e = s\ent()
-  assert 1.378  <= e and  e <=1.38
+  assert 1.378  <= e and  e <=1.38, "bad ent"
 
 eg.num = ->
   n=Num!
