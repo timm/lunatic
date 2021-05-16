@@ -1,0 +1,2 @@
+moonscript > 0.5
+gawk >= 5.1

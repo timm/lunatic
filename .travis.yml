@@ -18,5 +18,5 @@ install:
   - sudo luarocks install moonscript --dev
 
 script:
-  - cd src
-  - moon eg.moon
+  - cd test
+  - for f in *.moon; do echo "\n====== $f\n"; moon $f; done

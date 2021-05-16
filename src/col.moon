@@ -35,9 +35,8 @@ class Sym extends Col
 -- Summarize numeric columns
 class Num extends Col
   new: (at,txt) =>
-    @mu,@sd,@m2,@lo,@hi = 0,0,0,1E32,-1E32
-    @all = {}
     super at,txt
+    @mu,@sd,@m2,@lo,@hi = 0,0,0,1E32,-1E32
   add1: (x) =>
     d    = x - @mu
     @mu += d/@n
