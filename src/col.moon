@@ -41,7 +41,7 @@ class Num extends Col
     d    = x - @mu
     @mu += d/@n
     @m2 += d*(x-@mu)
-    @sd  = (@n<2 and 0 or (@m2<0 and 0 or @m2/@n))^0.5
+    @sd  = (@n<2 and 0 or (@m2<0 and 0 or @m2/(@n-1)))^0.5
     @lo  = x if x < @lo
     @hi  = x if x > @hi
 
