@@ -23,7 +23,8 @@ class Col
      @\add1 x
 ```
 
-## `Sym`bols summarize a column of symbols.
+## Sym
+Summarize a column of symbols.
 
 ```moonscript
 class Sym extends Col
