@@ -7,4 +7,4 @@
 [![](https://img.shields.io/badge/license-mit-lightgrey)](http://github.com/timm/lunar/blob/main/LICENSE.md)<br>
 
 <a href="http://menzies.us/lunar"><img 
-   width=200 src="/docs/assets/img/readthedocs.png"></a>
+   height=32 src="/docs/assets/img/readthedocs.png"></a>
