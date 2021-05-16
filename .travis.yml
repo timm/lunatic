@@ -17,6 +17,7 @@ install:
   - sudo apt-get install -y luarocks
   - sudo luarocks install moonscript --dev
   - moon -v
+  - lua -v
 
 script:
   - cd test

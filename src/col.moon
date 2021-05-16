@@ -29,7 +29,7 @@ class Sym extends Col
      e=0
      for _,v in pairs @all
        inc = v/@n*math.log(v/@n,2)
-       print(v, inc)
+       print(v, @n, inc)
        e -= inc
      e
    mid: => @mode
