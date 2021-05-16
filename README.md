@@ -5,3 +5,6 @@
 [![](https://img.shields.io/badge/language-moonscript,bash-orange)](https://moonscript.org/reference/)
 ![](https://img.shields.io/badge/purpose-ai%20,%20se-blueviolet)
 [![](https://img.shields.io/badge/license-mit-lightgrey)](http://github.com/timm/lunar/blob/main/LICENSE.md)<br>
+
+<a href="http://menzies.us/lunar"><img 
+   width=300 src="/assests/img/readthedocs.png"></a>
