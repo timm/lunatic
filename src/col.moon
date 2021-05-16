@@ -28,7 +28,9 @@ class Sym extends Col
    ent: =>
      e=0
      for _,v in pairs @all
-       e -= v/@n*math.log(v/@n,2)
+       inc = v/@n*math.log(v/@n,2)
+       print(v, inc)
+       e -= inc
      e
    mid: => @mode
    spread: => @\ent!
