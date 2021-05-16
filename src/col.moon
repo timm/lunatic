@@ -9,7 +9,7 @@ is=require "is"
 -- Generic stuff for all columns.
 class Col
   new: (at=1,txt='') => 
-    @n, @at, @txt, @w = 1, at, txt, is.weighted(txt)
+    @n, @at, @txt, @w = 0, at, txt, is.weighted(txt)
   adds: (a) => [@\add(x) for x in *a]
   add:  (x) =>
     if x != "?" 

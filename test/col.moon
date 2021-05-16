@@ -6,11 +6,12 @@ eg={}
 
 import Sym,Num from require "col"
 
+
 eg.sym = ->
   s=Sym!
   s\adds {"a", "a", "a", "a", "b", "b", "c"}
   assert 4==s.all.a
-  print s\ent()
+  assert 1.378 <= s\ent() and s\ent() <=1.38
 
 eg.num = ->
   n=Num!
