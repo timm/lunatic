@@ -15,7 +15,8 @@ class Col
      @n += 1
      @\add1 x
 
--- ## `Sym`bols summarize a column of symbols.
+-- ## Sym
+-- Summarize a column of symbols.
 class Sym extends Col
   __tostring: => show(@)
    new: (at,txt) =>
