@@ -8,14 +8,13 @@ mkdir -p $Ell/test
 
 alias gp="git add *;git commit -am save;git push;git status"
 alias ls="ls -G"
-alias tmux="$(which tmux) -f $Ell/etc/tmux-conf "
+alias tmux="tmux -f $Ell/etc/tmux-conf "
 alias vi="vim -u $Ell/etc/vimrc "
 alias vims="vim +PluginInstall +qall"         
 
 docs() { $Ell/etc/moon2md $Ell/src; }
 here() { cd $1; basename `pwd`; }
 aliases() {
- cd $1
  for f in *.moon; do
    if grep -qs "^#!\/usr\/bin\/env" $f; then
      chmod +x $f
