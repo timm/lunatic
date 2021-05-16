@@ -19,4 +19,4 @@ install:
 
 script:
   - cd test
-  - for f in *.moon; do echo "\n====== $f\n"; moon $f; done
+  - for f in *.moon; do printf "\n\u001b[32m====== $f \u001b[0m\n\n"; moon $f; done
