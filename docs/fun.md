@@ -85,8 +85,8 @@ say= (t) ->
   out= (if t.__class then t.__class.__name else "").."{"
   sep= ""
   for k in *sorted [k for k,_ in pairs t when pub k]
-    v     = t[k]
-    tmp   = (type(k) !="number" and ":#{k} #{say(v)}") or say(v)
+    v   = t[k]
+    tmp = (type(k) !="number" and ":#{k} #{say(v)}") or say(v)
     out ..= sep..tmp
     sep   = " "
   out.."}"
