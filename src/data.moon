@@ -8,28 +8,24 @@ import Col, Num, Sym from require("col")
 -- ## Skip
 -- Anything sent to `Skip` just gets ignored.
 class Skip extends Col
-  new: (at,txt) =>
-    super at,txt
-    @_xx = 22
   add1: (x) => x
 
 -- ## Cols
 -- Manager for columns. Creates the right kind of columns, 
 -- stores them in different kinds of arrays.
 class Cols
-  __tostring: => show(@)
   new:(t)  =>
     @xs,  @ys, @all, @klass = {},{},{},nil
     for at,txt in pairs t do @\new1 at,txt
   new1: (at,txt) =>
     what = txt\find"?" and Skip or (isNum(txt) and Num or Sym)
-    x    = what at,txt
-    @all[#@all + 1] = x
-    if x.__class != Skip
-      if isKlass txt then @klass = x
-      if isY     txt then @ys[#@ys + 1] = x
-      if isX     txt then @xs[#@xs + 1] = x
-    x
+    new  = what(at,txt)
+    @all[#@all + 1] = new
+    if new.__class != Skip
+      if isKlass txt then @klass = new
+      if isY     txt then @ys[#@ys + 1] = new
+      if isX     txt then @xs[#@xs + 1] = new
+    new
   add: (a) => 
    for col in *@all do col\add a[col.at]
    a
@@ -37,11 +33,10 @@ class Cols
 -- ## Data
 -- Stores data in `rows`, and summarizes that data in  `Col`umns.
 class Data
-  __tostring: => show(@)
   new:(a={}) =>
     @rows, @cols = {}, nil
     for x in *a do @\add x
-  add: (x) => 
+  add: (x) =>
     return if #x==0
     if @cols then @rows[#@rows+1]=@cols\add x else @cols= Cols x
   clone:(a={}) =>
@@ -51,4 +46,4 @@ class Data
 
 -- ## Exports
 -- Just the stuff anyone else might need.
-:Data
+:Data, :Cols
