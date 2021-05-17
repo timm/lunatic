@@ -25,7 +25,8 @@ class Options
 -------------------------------------------------------
 
 ```moonscript
-  new: => @all = {k,v[1] for k,v in pairs @@default}
+  new: => 
+    @all = {k,v[1] for k,v in pairs @@default}
   showHelp: =>
     t = @@default
     print "\n#{@@what}\n#{@@which}\n#{@@copyright}\n\nOptions:"
@@ -47,8 +48,8 @@ class Options
       else
         print "?? '#{flag}' unknown"
   run: =>
-   @cli!
-   Rand.seed = @all.seed
+    @cli!
+    Rand.seed = @all.seed
 ```
 
 --------------------------
