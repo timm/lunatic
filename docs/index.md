@@ -3,11 +3,7 @@ title: "index.moon"
 ---
 
 
-## LUNAR
-
-```moonscript
-```
-
+## Lunatic 
 Ok?
 Thetruth is out there
 ### asdas
