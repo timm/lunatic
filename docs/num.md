@@ -12,7 +12,7 @@ import Col from require "col"
 
 ## Num
 Summarize numeric columns
-## Basic stuff
+## Basics
 
 ```moonscript
 class Num extends Col
@@ -28,16 +28,16 @@ class Num extends Col
     @hi  = x if x > @hi
 ```
 
-## Reporting stuff
+## Reporting 
 
 ```moonscript
-  mid:                => @mu
-  spread:             => @sd
+  mid:               => @mu
+  spread:            => @sd
   summary:(r=1,w=20) =>
     string,format("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
 ```
 
-## Distance stuff
+## Distance 
 
 ```moonscript
   norm1: (x) => math.max(0, math.min(1, (x-@lo)/(@hi - @lo + 1E-32)))
@@ -53,7 +53,7 @@ class Num extends Col
     math.abs x-y
 ```
 
-## Bayesian stuff
+## Bayes
 
 ```moonscript
   like: (i,x,_) =>
@@ -64,5 +64,10 @@ class Num extends Col
     denom = (math.pi * 2 * var) ^ .5
     num   = e ^ (-(x - i.mu)^2 / (2 * var + 0.0001))
     num / (denom + 1E-64)
+```
+
+Export control
+
+```moonscript
 :Num
 ```

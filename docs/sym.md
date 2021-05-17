@@ -11,7 +11,7 @@ import Col from require "col"
 ```
 
 Summarize a column of symbols.
-## Basic stuff
+## Basics
 
 ```moonscript
 class Sym extends Col
@@ -23,7 +23,7 @@ class Sym extends Col
      @most,@mode = @all[x],x if @all[x] > @most
 ```
 
-## Reporting stuff
+## Reporting 
 
 ```moonscript
    ent: =>
@@ -37,20 +37,20 @@ class Sym extends Col
      string.format("%20s : %s (%s)", @txt, keys, @mode)
 ```
 
-## Distance stuff
+## Distance 
 
 ```moonscript
    norm1: (x)  => x
    dist1: (x,y) => x==y and 0 or 1
 ```
 
-## Bayesian Stuff
+## Bayes
 
 ```moonscript
    like: (x,prior,my) => ((@seen[x] or 0) + prior*my.m) / (@n + my.m)
 ```
 
-## Discretization stuff
+## Discretization
 
 ```moonscript
    simpler: (j) =>

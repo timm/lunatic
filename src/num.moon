@@ -7,7 +7,7 @@ import Col from require "col"
 
 -- ## Num
 -- Summarize numeric columns
--- ## Basic stuff
+-- ## Basics
 
 class Num extends Col
   new: (at,txt) =>
@@ -21,14 +21,14 @@ class Num extends Col
     @lo  = x if x < @lo
     @hi  = x if x > @hi
 
--- ## Reporting stuff
+-- ## Reporting 
 
-  mid:                => @mu
-  spread:             => @sd
+  mid:               => @mu
+  spread:            => @sd
   summary:(r=1,w=20) =>
     string,format("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
 
--- ## Distance stuff
+-- ## Distance 
 
   norm1: (x) => math.max(0, math.min(1, (x-@lo)/(@hi - @lo + 1E-32)))
   dist1: (x,y) ->
@@ -42,7 +42,7 @@ class Num extends Col
       x,y = @\norm(x), @\norm(y)
     math.abs x-y
 
--- ## Bayesian stuff
+-- ## Bayes
 
   like: (i,x,_) =>
     return 0 if x < @mu - 4*@sd 
@@ -53,4 +53,5 @@ class Num extends Col
     num   = e ^ (-(x - i.mu)^2 / (2 * var + 0.0001))
     num / (denom + 1E-64)
 
+-- Export control
 :Num
