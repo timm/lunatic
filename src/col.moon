@@ -25,4 +25,4 @@ class Skip extends Col
   add1: (x,_) => x
 
 -- ## Exports
-:Col :Skip
+:Col, :Skip

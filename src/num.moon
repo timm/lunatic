@@ -7,6 +7,8 @@ import Col from require "col"
 
 -- ## Num
 -- Summarize numeric columns
+-- ## Basic stuff
+
 class Num extends Col
   new: (at,txt) =>
     super at,txt
@@ -18,8 +20,16 @@ class Num extends Col
     @sd  = (@n<2 and 0 or (@m2<0 and 0 or @m2/(@n-1)))^0.5
     @lo  = x if x < @lo
     @hi  = x if x > @hi
-  summary:(r=1) =>
-    string,format("%20s : %.1f..%.1f (%.1f)", @txt,@lo,@hi,@mu)
+
+-- ## Reporting stuff
+
+  mid:                => @mu
+  spread:             => @sd
+  summary:(r=1,w=20) =>
+    string,format("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
+
+-- ## Distance stuff
+
   norm1: (x) => math.max(0, math.min(1, (x-@lo)/(@hi - @lo + 1E-32)))
   dist1: (x,y) ->
     if x=="?"
@@ -31,6 +41,9 @@ class Num extends Col
     else
       x,y = @\norm(x), @\norm(y)
     math.abs x-y
+
+-- ## Bayesian stuff
+
   like: (i,x,_) =>
     return 0 if x < @mu - 4*@sd 
     return 0 if x > @mu + 4*@sd 

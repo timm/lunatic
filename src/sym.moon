@@ -5,8 +5,9 @@
 require "fun"
 import Col from require "col"
 
-## Sym
 -- Summarize a column of symbols.
+-- ## Basic stuff
+
 class Sym extends Col
    new: (at,txt) =>
      super at,txt
@@ -14,18 +15,29 @@ class Sym extends Col
    add1: (x,n=1) =>
      @all[x] = (@all[x] or 0) + n
      @most,@mode = @all[x],x if @all[x] > @most
+
+-- ## Reporting stuff
    ent: =>
      e=0
      for _,v in pairs @all do e -= v/@n*math.log(v/@n)/math.log(2)
      e
    mid:                => @mode
    spread:             => @\ent!
-   norm1: (x)          => x
-   dist1: (x,y)        => x==y and 0 or 1
-   like:  (x,prior,my) => ((@seen[x] or 0) + prior*my.m) / (@n + my.m)
    summary: =>
      keys= table.concat(sorted [k for k,_  in pairs @all],", ")
      string.format("%20s : %s (%s)", @txt, keys, @mode)
+
+-- ## Distance stuff
+
+   norm1: (x)          => x
+   dist1: (x,y)        => x==y and 0 or 1
+
+-- ## Bayesian Stuff
+
+   like:  (x,prior,my) => ((@seen[x] or 0) + prior*my.m) / (@n + my.m)
+
+-- ## Discretization stuff
+
    simpler: (j) =>
      k= @\merge(j)
      e1,n1 = @\ent!, @n
