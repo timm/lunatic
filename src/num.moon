@@ -53,5 +53,5 @@ class Num extends Col
     num   = e ^ (-(x - i.mu)^2 / (2 * var + 0.0001))
     num / (denom + 1E-64)
 
--- Export control
+-- ## Exports
 :Num

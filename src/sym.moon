@@ -51,6 +51,6 @@ class Sym extends Col
          k\add x,n
      k
 
--- Export control
+-- ## Exports
 
 :Sym

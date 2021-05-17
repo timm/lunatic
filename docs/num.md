@@ -66,7 +66,7 @@ class Num extends Col
     num / (denom + 1E-64)
 ```
 
-Export control
+## Exports
 
 ```moonscript
 :Num

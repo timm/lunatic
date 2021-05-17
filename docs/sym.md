@@ -67,7 +67,7 @@ class Sym extends Col
      k
 ```
 
-Export control
+## Exports
 
 ```moonscript
 :Sym
