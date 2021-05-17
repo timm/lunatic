@@ -54,7 +54,7 @@ Here's the structure of this repo showing some of the standard bits:
 - `./README.md` : some quick intro notes. Also, good place to show your badges to let folks see, at a glance, what
   this is all about. e.g.
   - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4728990.svg)](https://doi.org/10.5281/zenodo.4728990) : code is available, forever, is  some long term storage facility;
-  - [![Build Status](https://travis-ci.com/timm/lunar.svg?branch=main)](https://travis-ci.com/timm/lunar) : code is being
+  - [![Build Status](https://travis-ci.com/timm/lunatic.svg?branch=main)](https://travis-ci.com/timm/lunatic) : code is being
     tested, each  time it is committed;
   - ![](https://img.shields.io/badge/linting-luac-brown) : each time the code is saved, we lint it for errors.
   - and others beside.
@@ -88,7 +88,7 @@ Git. Enough  said. Just do it.
 
 ## Open Source Licenses
 
-(To add a license to your repo, add a  [LICENSE.md](https://github.com/timm/lunar/blob/main/LICENSE.md)
+(To add a license to your repo, add a  [LICENSE.md](https://github.com/timm/lunatic/blob/main/LICENSE.md)
 file to the root of your repo.)
 
 Open source licenses are licenses that comply with the Open Source Definition— 
@@ -161,12 +161,12 @@ Very handy!
 
 ### Unit Testss
 
-(Your repo needs a [.travis.yml](https://github.com/timm/lunar/blob/main/.travis.yml)
+(Your repo needs a [.travis.yml](https://github.com/timm/lunatic/blob/main/.travis.yml)
 that adds a "post-commit hook" to the  repo. This hook runs a test suite each time
 the code is committed. This, in turn, updates a badge on your repo that  tells people
 your code has  tests and those tests are working.)
 
-[![Build Status](https://travis-ci.com/timm/lunar.svg?branch=main)](https://travis-ci.com/timm/lunar)
+[![Build Status](https://travis-ci.com/timm/lunatic.svg?branch=main)](https://travis-ci.com/timm/lunatic)
 
 To code the test suite, you need something that runs and returns 
 the shell flag _$?=0_ (if there 
@@ -176,7 +176,7 @@ _$?&gt;0_.
 
 As to how to write the test suite, there are any number of unit test tools.
 And its easy to write your own. For example, the  test suite here  is inside
-[./src/eg.moon](https://github.com/timm/lunar/blob/main/src/eg.moon). This code can be called in
+[./src/eg.moon](https://github.com/timm/lunatic/blob/main/src/eg.moon). This code can be called in
 three ways:
 
 - `cd src; ./eg.moon` which just runs everything;
