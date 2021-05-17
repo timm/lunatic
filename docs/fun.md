@@ -73,6 +73,14 @@ cli= (t) ->
 
 ## Array Utils
 Arrays have  indexes `1...max`.
+### Sum 
+
+```moonscript
+sum= (a,s=0)-> 
+  for x in *a do s += x
+  s
+```
+
 ## Table Utils
 Tables have arbitrary indexes
 ### sorted

@@ -26,13 +26,11 @@ class Sym extends Col
 ## Reporting 
 
 ```moonscript
-   ent: =>
-     e=0
-     for _,v in pairs @all do e -= v/@n*math.log(v/@n)/math.log(2)
-     e
-   mid:     => @mode
-   spread:  => @\ent!
-   summary: =>
+   mid:    => @mode
+   spread: => @\ent!
+   ent:    =>
+     sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
+   summary:=>
      keys= table.concat(sorted [k for k,_  in pairs @all],", ")
      string.format("%20s : %s (%s)", @txt, keys, @mode)
 ```
