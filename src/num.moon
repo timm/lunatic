@@ -1,12 +1,10 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
--- Tools for summarizing data.
-require "fun"
+-- Summarize numeric columns
+import fmt from require "fun"
 import Col from require "col"
 
--- ## Num
--- Summarize numeric columns
 -- ## Basics
 
 class Num extends Col
@@ -26,7 +24,7 @@ class Num extends Col
   mid:               => @mu
   spread:            => @sd
   summary:(r=1,w=20) =>
-    string,format("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
+    fmt("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
 
 -- ## Distance 
 
