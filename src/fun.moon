@@ -63,6 +63,9 @@ cli= (t) ->
 sorted= (t,f= (x,y) -> x < y) -> table.sort(t, f) or t
 
 -- ## Print utils
+-- ### prinft
+printf= (...) -> print(string.format(...))
+
 -- ### say
 -- Convert a table to a string, keys sorted alphabetically, 
 -- ignoring private keys.

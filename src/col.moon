@@ -12,41 +12,17 @@ class Col
     @at, @txt, @w = at, txt, is.weighted(txt)
     @n, @rank = 0, 0
   adds: (a) => [@\add(x) for x in *a]
-  add:  (x) =>
+  add:  (x,n=1) =>
     if x != "?" 
-      @n += 1
-      @\add1 x
+      @n += n
+      @\add1 x,n
+  norm: (x)   =>  x=="?" and x or @\norm1 x
+  dist: (x,y) =>  (x=="?" and y=="?") and  1 or @\dist1(x,y)
 
--- ## Sym
--- Summarize a column of symbols.
-class Sym extends Col
-   new: (at,txt) =>
-     super at,txt
-     @all, @most, @mode = {}, 0, nil
-   add1: (x) =>
-     @all[x] = (@all[x] or 0) + 1
-     @most,@mode = @all[x],x if @all[x] > @most
-   ent: =>
-     e=0
-     for _,v in pairs @all do e -= v/@n*math.log(v/@n)/math.log(2)
-     e
-   mid: => @mode
-   spread: => @\ent!
-
--- ## Num
--- Summarize numeric columns
-class Num extends Col
-  new: (at,txt) =>
-    super at,txt
-    @mu,@sd,@m2,@lo,@hi = 0,0,0,1E32,-1E32
-  add1: (x) =>
-    d    = x - @mu
-    @mu += d/@n
-    @m2 += d*(x-@mu)
-    @sd  = (@n<2 and 0 or (@m2<0 and 0 or @m2/(@n-1)))^0.5
-    @lo  = x if x < @lo
-    @hi  = x if x > @hi
+-- ## Skip
+-- Anything sent to `Skip` just gets ignored.
+class Skip extends Col
+  add1: (x,_) => x
 
 -- ## Exports
--- Just the stuff anyone else might need.
-:Col, :Sym,  :Num
+:Col :Skip

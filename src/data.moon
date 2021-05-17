@@ -6,12 +6,7 @@
 --  Requires:
 require "fun"
 is=require "is"
-import Col, Num, Sym from require "col"
-
--- ## Skip
--- Anything sent to `Skip` just gets ignored.
-class Skip extends Col
-  add1: (x) => x
+import Num, Sym,Skip from require "col"
 
 -- ## Cols
 -- Manager for columns. Creates the right kind of columns, 
