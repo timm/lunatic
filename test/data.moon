@@ -16,7 +16,6 @@ eg.cols = ->
 eg.data = ->
   t=Data!
   [t\add(x) for x in csv "../etc/data/auto93.csv"]
-  print("data",t.rows[#t.rows][1])
-  print(t.cols.all)
+  said(t.cols.ys)
 
 cli eg

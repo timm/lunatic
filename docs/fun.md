@@ -26,6 +26,25 @@ csv= (file)->
       io.close(stream) and nil
 ```
 
+## Maths
+### Random numbers
+If standard generators are not stable across different
+platforms, then use this one.
+
+```moonscript
+class Rand
+  now=nil
+  new: =>
+    @seed      = 10013
+    @multipler = 16807.0
+    @modulus   = 2147483647.0
+    @@now = @
+  park_miller_randomizer: =>
+    @seed = (@multipler * @seed) % @modulus -- cycle=2,147,483,646
+    @seed / @modulus 
+  any: (lo=0,hi=1) => lo + (hi-lo)*@\park_miller_randomizer!
+```
+
 ## Meta functions
 ### same
 Do nothing, return something. 
@@ -68,16 +87,16 @@ Convert a table to a string, keys sorted alphabetically,
 ignoring private keys.
 
 ```moonscript
-say= (t) ->
+say= (t, out="") ->
   return tostring(t) if (t=={} or type(t) != "table")
-  pub= (s) -> type(s)=="string" and not s\match"^_"
-  out= (if t.__class then t.__class.__name else "").."{"
+  private= (s) -> type(s)=="string" and s\match"^_"
+  out = (if t.__class then t.__class.__name else "").."{"
   sep= ""
-  for k in *sorted [k for k,_ in pairs t when pub k]
+  for k in *sorted [k for k,_ in pairs t when not private k]
     v   = t[k]
     tmp = (type(k) !="number" and ":#{k} #{say(v)}") or say(v)
     out ..= sep..tmp
-    sep   = " "
+    sep   = ", "
   out.."}"
 ```
 
