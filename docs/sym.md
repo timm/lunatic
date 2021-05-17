@@ -6,7 +6,7 @@ title: "sym.moon"
 Tools for summarizing data.
 
 ```moonscript
-require "fun"
+import sum,cat,fmt,sorted from require "fun"
 import Col from require "col"
 ```
 
@@ -31,8 +31,8 @@ class Sym extends Col
    ent:    =>
      sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
    summary:=>
-     keys= table.concat(sorted [k for k,_  in pairs @all],", ")
-     string.format("%20s : %s (%s)", @txt, keys, @mode)
+     keys= cat(sorted [k for k,_  in pairs @all],", ")
+     fmt("%20s : %s (%s)", @txt, keys, @mode)
 ```
 
 ## Distance 

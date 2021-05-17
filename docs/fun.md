@@ -7,7 +7,6 @@ Misc utilities.
 All this code get loaded into the global space
 
 ```moonscript
-export *
 ```
 
 ## File utils
@@ -73,11 +72,11 @@ cli= (t) ->
 
 ## Array Utils
 Arrays have  indexes `1...max`.
-### Sum 
+### sum(a, filter=same) 
 
 ```moonscript
-sum= (a,s=0)-> 
-  for x in *a do s += x
+sum= (a,filter=same, s=0) ->
+  for x in *a do s += filter(x)
   s
 ```
 
@@ -90,10 +89,25 @@ sorted= (t,f= (x,y) -> x < y) -> table.sort(t, f) or t
 ```
 
 ## Print utils
-### prinft
+### fmt
+Generate a string.
 
 ```moonscript
-printf= (...) -> print(string.format(...))
+fmt= (...) ->  string.format(...)
+```
+
+### prinft
+Print  a generated script
+
+```moonscript
+fmtln= (...) -> print(fmt(...))
+```
+
+### cat
+Shorthand for table.cocat
+
+```moonscript
+cat= (a, sep=",") -> table.concat(a,sep)
 ```
 
 ### say
@@ -119,4 +133,6 @@ Print a table, as a string
 
 ```moonscript
 said= (x) -> print(say(x))
+{:csv, :Rand, :same, :cli, :sum, :sorted,
+ :fmt, :fmtln, :cat, :say, :said}
 ```

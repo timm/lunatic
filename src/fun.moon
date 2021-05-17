@@ -55,9 +55,9 @@ cli= (t) ->
 
 -- ## Array Utils
 -- Arrays have  indexes `1...max`.
--- ### Sum 
-sum= (a,f=same, s=0) ->
-  for x in *a do s += f(x)
+-- ### sum(a, filter=same) 
+sum= (a,filter=same, s=0) ->
+  for x in *a do s += filter(x)
   s
 
 -- ## Table Utils
