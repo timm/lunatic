@@ -49,5 +49,10 @@ class Options
   run: =>
    @cli!
    Rand.seed = @all.seed
+```
+
+--------------------------
+
+```moonscript
 Options!\run!
 ```
