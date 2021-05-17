@@ -2,7 +2,7 @@
 -- vim: ts=2 sw=2 et :
 
 -- Tools for summarizing data.
-require "fun"
+import sum,cat,fmt,sorted from require "fun"
 import Col from require "col"
 
 -- Summarize a column of symbols.
@@ -22,8 +22,8 @@ class Sym extends Col
    ent:    =>
      sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
    summary:=>
-     keys= table.concat(sorted [k for k,_  in pairs @all],", ")
-     string.format("%20s : %s (%s)", @txt, keys, @mode)
+     keys= cat(sorted [k for k,_  in pairs @all],", ")
+     fmt("%20s : %s (%s)", @txt, keys, @mode)
 
 -- ## Distance 
 

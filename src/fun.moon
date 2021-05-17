@@ -3,8 +3,6 @@
 -- Misc utilities.
 -- All this code get loaded into the global space
 
-export *
-
 -- ## File utils
 -- ### Csv
 -- Read a comma operated file, kill space and comments,
@@ -58,8 +56,8 @@ cli= (t) ->
 -- ## Array Utils
 -- Arrays have  indexes `1...max`.
 -- ### Sum 
-sum= (a,s=0)-> 
-  for x in *a do s += x
+sum= (a,f=same, s=0) ->
+  for x in *a do s += f(x)
   s
 
 -- ## Table Utils
@@ -68,8 +66,17 @@ sum= (a,s=0)->
 sorted= (t,f= (x,y) -> x < y) -> table.sort(t, f) or t
 
 -- ## Print utils
+-- ### fmt
+-- Generate a string.
+fmt= (...) ->  string.format(...)
+
 -- ### prinft
-printf= (...) -> print(string.format(...))
+-- Print  a generated script
+fmtln= (...) -> print(fmt(...))
+
+-- ### cat
+-- Shorthand for table.cocat
+cat= (a, sep=",") -> table.concat(a,sep)
 
 -- ### say
 -- Convert a table to a string, keys sorted alphabetically, 
@@ -90,3 +97,5 @@ say= (t, out="") ->
 -- Print a table, as a string
 said= (x) -> print(say(x))
 
+{:csv, :Rand, :same, :cli, :sum, :sorted,
+ :fmt, :fmtln, :cat, :say, :said}
