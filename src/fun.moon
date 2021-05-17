@@ -60,7 +60,7 @@ cli= (t) ->
 -- ## Table Utils
 -- Tables have arbitrary indexes
 -- ### sorted
-sorted= (t,f= (x,y) -> x < y) -> table.sort(t,f) or t
+sorted= (t,f= (x,y) -> x < y) -> table.sort(t, f) or t
 
 -- ## Print utils
 -- ### say
