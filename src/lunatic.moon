@@ -1,8 +1,9 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
--- Config options
-require "fun"
+-- Configuration  options which,  optionally, can
+-- be tweaked from the  command-line.
+import Rand, sorted from require "fun"
 
 class Options
   @what      = "./lunatic.moon [options]"
@@ -18,31 +19,25 @@ class Options
     size:  {.5,             "min cluster size control"}
     some:  {1024,           "sub-sampling control"}
 -- -------------------------------------------------------
-  new: => 
+  new: =>
     @all = {k,v[1] for k,v in pairs @@default}
-  showHelp: =>
+  showHelp: (width1=10,width2=15) =>
     t = @@default
     print "\n#{@@what}\n#{@@which}\n#{@@copyright}\n\nOptions:"
-    for k in *sorted [k for k,_ in pairs t]
-      d,h   = t[k][1], t[k][2]
-      s1,s2 = " "\rep(10-#k), " "\rep(15-#tostring(d))
+    for k,v in *sorted [k for k,_ in pairs t]
+      d,h   = v[1], v[2]
+      s1,s2 = " "\rep(width1-#k), " "\rep(width2-#tostring(d))
       print "  -#{k}#{s1} #{d}#{s2} #{h}"
-  cli: =>
-    i=0
+  tweak: (      i=0)=>
     while i < #arg
       i   += 1
-      k    = arg[i]
-      flag = k\gsub("^-","")
-      if k=="-h"
-        @\showHelp! if k=="-h"
-      elseif @all[flag]
-        @all[flag] = tonumber arg[i+1] or arg[i+1]
+      flag = arg[i]\gsub("^-","")
+      if @all[flag]
         i += 1
-      else
-        print "?? '#{flag}' unknown"
-  run: =>
-    @cli!
-    Rand.seed = @all.seed
+        @all[flag] = tonumber(arg[i]) or arg[i]
+      elseif k=="h" @\showHelp! 
+      else          print "?? '#{flag}' unknown"
+    @all
 
 --  --------------------------
-Options!\run!
+Options!\tweak!
