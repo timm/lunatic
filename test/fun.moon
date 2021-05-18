@@ -1,6 +1,6 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
-package.moonpath = '../src/?.moon;' .. package.moonpath
+package.moonpath = '../?/?.moon;' .. package.moonpath
 require "fun"
 import Num from require "col"
 import Cols from require "data"

@@ -5,7 +5,7 @@
 -- be tweaked from the  command-line.
 import Rand, sorted from require "fun"
 
-class Options
+class About
   @what      = "./lunatic.moon [options]"
   @which     = "Data mining, optimizers, via constrast set learning"
   @copyright = "(c) 2021 Tim Menzies, timm@ieee.org"
@@ -19,16 +19,16 @@ class Options
     size:  {.5,             "min cluster size control"}
     some:  {1024,           "sub-sampling control"}
 -- -------------------------------------------------------
-  new: =>
-    @all = {k,v[1] for k,v in pairs @@default}
-  showHelp: (width1=10,width2=15) =>
-    t = @@default
-    print "\n#{@@what}\n#{@@which}\n#{@@copyright}\n\nOptions:"
-    for k,v in *sorted [k for k,_ in pairs t]
-      d,h   = v[1], v[2]
+  new: => @all = {k,v[1] for k,v in pairs @@default}
+  showHelps: (width1=10,width2=15) =>
+    help = (k,d,h) ->
       s1,s2 = " "\rep(width1-#k), " "\rep(width2-#tostring(d))
       print "  -#{k}#{s1} #{d}#{s2} #{h}"
-  tweak: (      i=0)=>
+    print "\n#{@@what}\n#{@@which}\n#{@@copyright}\n\nOptions:"
+    t= @@defaults
+    help "h",""."show help"
+    for k in *sorted [k for k,_ in pairs t] do help k,t[k][1],t[k][2]
+  addCommandLineSettings: (      i=0)=>
     while i < #arg
       i   += 1
       flag = arg[i]\gsub("^-","")
@@ -40,4 +40,4 @@ class Options
     @all
 
 --  --------------------------
-Options!\tweak!
+About!\addCommandLineSettings!
