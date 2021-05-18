@@ -5,10 +5,6 @@ title: "fun.moon"
 
 Misc utilities.
 All this code get loaded into the global space
-
-```moonscript
-```
-
 ## File utils
 ### Csv
 Read a comma operated file, kill space and comments,

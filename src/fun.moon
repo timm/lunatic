@@ -2,7 +2,6 @@
 
 -- Misc utilities.
 -- All this code get loaded into the global space
-
 -- ## File utils
 -- ### Csv
 -- Read a comma operated file, kill space and comments,
