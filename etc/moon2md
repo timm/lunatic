@@ -29,6 +29,5 @@ cd $1
 for f in *.moon;do
   g=${f%.moon}
   doc $f > ../docs/${g}.md
-  echo  "$sep <a href=\"$f\">$g</a>" >> $2/localtoc.html
-  sep="::"
+  echo  "<li> <a href=\"$f\">$g</a></li>" >> $2/localtoc.html
 done
