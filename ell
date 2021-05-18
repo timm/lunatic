@@ -1,9 +1,12 @@
 clear
 tput bold; tput setaf 6; cat <<'EOF'
-  ,-,      
- /.(         “Be the moon and inspire people, 
- \ {          even when you're far from full.” 
-  `-`  hjw    -- K. Tolnoe
+
+╭╮╱╱╱╱╱╱╱╱╱╭╮       “Be the moon and inspire people, 
+┃┃╱╱╱╱╱╱╱╱╭╯╰╮       even when you're far from full."
+┃┃╭╮╭┳━╮╭━┻╮╭╋┳━━╮   -- K. Tolnoe
+┃┃┃┃┃┃╭╮┫╭╮┃┃┣┫╭━╯
+┃╰┫╰╯┃┃┃┃╭╮┃╰┫┃╰━╮
+╰━┻━━┻╯╰┻╯╰┻━┻┻━━╯
 
 EOF
 tput sgr0
