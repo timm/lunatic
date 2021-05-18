@@ -29,7 +29,7 @@ class Rand
   park_miller_randomizer: =>
     @seed = (@multipler * @seed) % @modulus -- cycle=2,147,483,646
     @seed / @modulus 
-  any: (lo=0,hi=1) => lo + (hi-lo)*@\park_miller_randomizer!
+  any: (lo=0, hi=1) => lo + (hi-lo)*@\park_miller_randomizer!
 
 -- ## Meta functions
 -- ### same
@@ -42,8 +42,11 @@ same= (x) -> x
 -- "?" means list the options, `x` means run `x`
 -- otherwise, run all.
 
+sorted=nil
 cli= (t) ->
-  run = (x) -> print("-- "..x) or t[x]()
+  run = (x) -> 
+    print("-- ", x) 
+    t[x]()
   a = sorted [x for x,_ in pairs t]
   if s = arg[1]
     if s=="?" [print(" - #{x}") for x in *a]
@@ -51,6 +54,7 @@ cli= (t) ->
       if t[s] then run(s) else print("?? Unknown '#{s}'")
   else
     [run s for s in *a]
+
 
 -- ## Array Utils
 -- Arrays have  indexes `1...max`.
@@ -98,4 +102,4 @@ said= (x) -> print(say(x))
 
 -- ## Exports
 {:csv, :Rand, :same, :cli, :sum, :sorted,
- :fmt, :fmtln, :cat, :say, :said}
+ :fmt, :fmtln, :cat, :say, :said }

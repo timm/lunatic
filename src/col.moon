@@ -1,12 +1,9 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
--- Tools for summarizing data.
-require "fun"
-is=require "is"
-
--- ## Col
 -- Generic stuff for all columns.
+import is from require "is"
+
 class Col
   new: (at=1,txt='') => 
     @at, @txt, @w = at, txt, is.weighted(txt)

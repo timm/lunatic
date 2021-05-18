@@ -3,11 +3,11 @@
 
 -- Tools for storing rows of data, summarized into columns.
 
-import from require "fun"
-import is   from require "is"
-import Num  from require "Num"
-import Sym  from require "Sym"
-import Skip from require "Col"
+import sorted from require "fun"
+import is     from require "is"
+import Num    from require "Num"
+import Sym    from require "Sym"
+import Skip   from require "Col"
 
 -- ## Cols
 -- Manager for columns. Creates the right kind of columns, 

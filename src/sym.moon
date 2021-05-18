@@ -20,7 +20,7 @@ class Sym extends Col
    mid:    => @mode
    spread: => @\ent!
    ent:    => sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
-   summary: (w=20,r-1) =>
+   summary: (w=20,r=1) =>
      fmt("%#{w}s : %s (%s)",@txt,cat(sorted[k for k,_ in pairs @all]),@mode)
 
 -- ## distance 

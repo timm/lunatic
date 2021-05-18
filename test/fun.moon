@@ -1,7 +1,7 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
-package.moonpath = '../?/?.moon;' .. package.moonpath
-require "fun"
+package.moonpath = '../src/?.moon;' .. package.moonpath
+import Rand,sorted,said,csv,cli,eg from require "fun"
 import Num from require "col"
 import Cols from require "data"
 
@@ -18,6 +18,7 @@ eg.rand= ->
   Rand.seed=1
   r=Rand!
   a2= sorted [r\any(10,20) for _=1,n]
+  for i=1,10 do print(r\any())
   assert eqs(a1,a2)
 
 eg.csv= ->
