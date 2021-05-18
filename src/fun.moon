@@ -96,5 +96,6 @@ say= (t, out="") ->
 -- Print a table, as a string
 said= (x) -> print(say(x))
 
+-- ## Exports
 {:csv, :Rand, :same, :cli, :sum, :sorted,
  :fmt, :fmtln, :cat, :say, :said}

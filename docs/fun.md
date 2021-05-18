@@ -129,6 +129,11 @@ Print a table, as a string
 
 ```moonscript
 said= (x) -> print(say(x))
+```
+
+## Exports
+
+```moonscript
 {:csv, :Rand, :same, :cli, :sum, :sorted,
  :fmt, :fmtln, :cat, :say, :said}
 ```
