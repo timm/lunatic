@@ -5,7 +5,7 @@
 import fmt from require "fun"
 import Col from require "col"
 
--- ## Basics
+-- ## basics
 
 class Num extends Col
   new: (at,txt) =>
@@ -19,16 +19,16 @@ class Num extends Col
     @lo  = x if x < @lo
     @hi  = x if x > @hi
 
--- ## Reporting 
+-- ## reporting 
 
   mid:               => @mu
   spread:            => @sd
-  summary:(r=1,w=20) =>
-    fmt("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
+  summary:(w=20,r=1) =>
+    fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mu)
 
--- ## Distance 
+-- ## distance 
 
-  norm1: (x) => math.max(0, math.min(1, (x-@lo)/(@hi - @lo + 1E-32)))
+  norm1: (x) => math.max(0,math.min(1,(x-@lo)/(@hi-@lo+1E-32)))
   dist1: (x,y) ->
     if x=="?"
       y= @\norm(y)
@@ -40,7 +40,7 @@ class Num extends Col
       x,y = @\norm(x), @\norm(y)
     math.abs x-y
 
--- ## Bayes
+-- ## bayes
 
   like: (i,x,_) =>
     return 0 if x < @mu - 4*@sd 
@@ -51,5 +51,5 @@ class Num extends Col
     num   = e ^ (-(x - i.mu)^2 / (2 * var + 0.0001))
     num / (denom + 1E-64)
 
--- ## Exports
+-- ## exports
 :Num

@@ -10,7 +10,7 @@ import fmt from require "fun"
 import Col from require "col"
 ```
 
-## Basics
+## basics
 
 ```moonscript
 class Num extends Col
@@ -26,19 +26,19 @@ class Num extends Col
     @hi  = x if x > @hi
 ```
 
-## Reporting 
+## reporting 
 
 ```moonscript
   mid:               => @mu
   spread:            => @sd
-  summary:(r=1,w=20) =>
-    fmt("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
+  summary:(w=20,r=1) =>
+    fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mu)
 ```
 
-## Distance 
+## distance 
 
 ```moonscript
-  norm1: (x) => math.max(0, math.min(1, (x-@lo)/(@hi - @lo + 1E-32)))
+  norm1: (x) => math.max(0,math.min(1,(x-@lo)/(@hi-@lo+1E-32)))
   dist1: (x,y) ->
     if x=="?"
       y= @\norm(y)
@@ -51,7 +51,7 @@ class Num extends Col
     math.abs x-y
 ```
 
-## Bayes
+## bayes
 
 ```moonscript
   like: (i,x,_) =>
@@ -64,7 +64,7 @@ class Num extends Col
     num / (denom + 1E-64)
 ```
 
-## Exports
+## exports
 
 ```moonscript
 :Num
