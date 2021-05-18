@@ -3,15 +3,13 @@ title: "num.moon"
 ---
 
 
-Tools for summarizing data.
+Summarize numeric columns
 
 ```moonscript
-require "fun"
+import fmt from require "fun"
 import Col from require "col"
 ```
 
-## Num
-Summarize numeric columns
 ## Basics
 
 ```moonscript
@@ -34,7 +32,7 @@ class Num extends Col
   mid:               => @mu
   spread:            => @sd
   summary:(r=1,w=20) =>
-    string,format("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
+    fmt("%{w}s : %.#{r}f..%.#{r}f (%.#{r}f)", @txt,@lo,@hi,@mu)
 ```
 
 ## Distance 

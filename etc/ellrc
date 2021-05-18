@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ############# assert dirs exist
-mkdir -p $Ell/docs
+mkdir -p $Ell/docs/_includes
 mkdir -p $Ell/etc
 mkdir -p $Ell/src
 mkdir -p $Ell/test
@@ -12,16 +12,14 @@ alias tmux="tmux -f $Ell/etc/tmux-conf "
 alias vi="vim -u $Ell/etc/vimrc "
 alias vims="vim +PluginInstall +qall"         
 
-docs() { $Ell/etc/moon2md $Ell/src; }
-here() { cd $1; basename `pwd`; }
+docs()    { $Ell/etc/moon2md $Ell/src $Ell/docs/_includes; }
+here()    { cd $1; basename `pwd`; }
 aliases() {
  cd $1
  for f in *.moon; do
    if grep -qs "^#!\/usr\/bin\/env" $f; then
      chmod +x $f
-     eval "alias ${f%.moon}=\"./$f\""
-  fi
- done
+     eval "alias ${f%.moon}=\"./$f\""; fi; done
 }
 
 aliases $Ell/src
