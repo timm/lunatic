@@ -26,12 +26,17 @@ class Num extends Col
     @hi  = x if x > @hi
 ```
 
+This is ?Knuth's incremental calculator for computing standard
+deviation and mean.  The current mean is wrong by some delta
+`d` so, each time we see a number, we update `@mu` by that error amount.
+But we acquire more information, and `@n` increases,
+we trend towards ignoring that delta (see the `d/@n` calculation).
 ## reporting 
 
 ```moonscript
   mid:               => @mu
   spread:            => @sd
-  summary:(w=20,r=1) =>
+  __tostring:(w=20,r=1) =>
     fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mu)
 ```
 
@@ -51,6 +56,10 @@ class Num extends Col
     math.abs x-y
 ```
 
+This is Aha's distance calculation. If any number is unknown,
+assume the worst and use the most distant possible value.
+Also, to comparing numbers from different scales, first `norm`alize them
+them to the same 0..1 range.
 ## bayes
 
 ```moonscript
@@ -64,6 +73,9 @@ class Num extends Col
     num / (denom + 1E-64)
 ```
 
+The closer `x` gets to the mean `@mu`, the more we believe it.
+But if we are too far from the mean (more that four standard 
+deviations) then we do not believe it at all.
 ## exports
 
 ```moonscript

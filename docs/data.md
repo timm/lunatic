@@ -3,7 +3,7 @@ title: "data.moon"
 ---
 
 
-Tools for storing rows of data, summarized into columns.
+Storing data in rows, summarized in columns.
 
 ```moonscript
 import sorted from require "fun"
