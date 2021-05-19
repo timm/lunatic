@@ -1,7 +1,8 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 package.moonpath = '../src/?.moon;' .. package.moonpath
-import Rand,sorted,said,csv,cli,eg from require "fun"
+import Rand,sorted,fmt,said from require "fun"
+import cat,sum,csv,cli,eg from require "fun"
 import Num from require "col"
 import Cols from require "data"
 
@@ -34,4 +35,11 @@ eg.say= ->
   said(true)
   said({1,2,3,4})
 
+eg.cat= -> assert "10, 20, 30" == cat({10,20,30})
+eg.fmt= ->
+  x=3
+  assert "1.111  2.22  3.33" ==fmt("%5.#{x}f %5.2f %5.2f", 1.1111,2.2222,3.333)
+
+eg.sum=  -> assert 10==sum( {1,2,3,4})
 cli eg
+

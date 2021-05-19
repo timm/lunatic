@@ -79,7 +79,7 @@ fmtln= (...) -> print(fmt(...))
 
 -- ### cat
 -- Shorthand for table.cocat
-cat= (a, sep=",") -> table.concat(a,sep)
+cat= (a, sep=", ") -> table.concat(a,sep)
 
 -- ### say
 -- Convert a table to a string, keys sorted alphabetically, 
