@@ -3,14 +3,13 @@ title: "sym.moon"
 ---
 
 
-Tools for summarizing data.
+Summarize a column of symbols.
 
 ```moonscript
 import sum,cat,fmt,sorted from require "fun"
 import Col from require "col"
 ```
 
-Summarize a column of symbols.
 ## basics
 
 ```moonscript

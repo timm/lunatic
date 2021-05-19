@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+about() {
+  gawk 'BEGIN {FS="\n"; RS=""}
+        NR==2 {print $1; exit}'  $1
+}
+
 doc() { gawk '
 BEGIN {print "---\ntitle: \"'$1'\"\n---\n"}
 /^#!\/usr\/bin/ { next }
@@ -29,5 +34,6 @@ cd $1
 for f in *.moon;do
   g=${f%.moon}
   doc $f > ../docs/${g}.md
-  echo  "&nbsp;&nbsp; &#9679; <a href=\"$g\">$g</a><br>" >> $2/localtoc.html
+  what=`about $f`
+  echo  "&nbsp;&nbsp; &#9679; <a href=\"$g\">$g</a>: $what<br>" >> $2/localtoc.html
 done

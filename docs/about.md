@@ -1,10 +1,13 @@
-#!/usr/bin/env moon
--- vim: ts=2 sw=2 et :
+---
+title: "about.moon"
+---
 
--- Configuration  options
--- which,  optionally, can be tweaked from the  command-line.
+
+Configuration  options
+which,  optionally, can be tweaked from the  command-line.
+
+```moonscript
 import Rand, sorted from require "fun"
-
 class About
   @what      = "./lunatic.moon [options]"
   @which     = "Data mining, optimizers, via constrast set learning"
@@ -18,7 +21,11 @@ class About
     cohen: {.35,            "defines small effects"}
     size:  {.5,             "min cluster size control"}
     some:  {1024,           "sub-sampling control"}
--- -------------------------------------------------------
+```
+
+-------------------------------------------------------
+
+```moonscript
   new: => @all = {k,v[1] for k,v in pairs @@default}
   showHelps: (width1=10,width2=15) =>
     help = (k,d,h) ->
@@ -38,6 +45,10 @@ class About
       elseif k=="h" @\showHelp! 
       else          print "?? '#{flag}' unknown"
     @all
+```
 
---  --------------------------
+--------------------------
+
+```moonscript
 About!\addCommandLineSettings!
+```
