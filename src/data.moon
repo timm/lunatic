@@ -1,8 +1,7 @@
 #!/usr/bin/env moon
 -- vim: ts=2 sw=2 et :
 
--- Tools for storing rows of data, summarized into columns.
-
+--  Storing data in rows, summarized in columns.
 import sorted from require "fun"
 import is     from require "is"
 import Num    from require "Num"
