@@ -27,16 +27,16 @@ class Num extends Col
 ```
 
 This is [Welford's incremental calculator](refs#Welford62) for computing standard
-deviation and mean.  The current mean is wrong by some delta
-`d` so, each time we see a number, we update `@mu` by that error amount.
-But we acquire more information, and `@n` increases,
+deviation and mean.   It assumes that current mean is wrong by some delta
+`d`.So, each time we see a number, we update `@mu` by that error amount.
+And as we acquire more information, and `@n` increases,
 we trend towards ignoring that delta (see the `d/@n` calculation).
 ## reporting 
 
 ```moonscript
   mid:               => @mu
   spread:            => @sd
-  __tostring:(w=20,r=1) =>
+  report: (w=20,r=1) =>
     fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mu)
 ```
 
@@ -56,9 +56,9 @@ we trend towards ignoring that delta (see the `d/@n` calculation).
     math.abs x-y
 ```
 
-This is Aha's distance calculation. If any number is unknown,
+This is [Aha's distance calculation](refs#Aha91). If any number is unknown,
 assume the worst and use the most distant possible value.
-Also, to comparing numbers from different scales, first `norm`alize them
+Also, before comparing numbers from different scales, first `norm`alize them
 them to the same 0..1 range.
 ## bayes
 

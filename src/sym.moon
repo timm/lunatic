@@ -19,7 +19,7 @@ class Sym extends Col
    mid:    => @mode
    spread: => @\ent!
    ent:    => sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
-   summary: (w=20,r=1) =>
+   report: (w=20,r=1) =>
      fmt("%#{w}s : %s (%s)",@txt,cat(sorted[k for k,_ in pairs @all]),@mode)
 
 -- ## distance 
@@ -27,10 +27,20 @@ class Sym extends Col
    norm1: (x)  => x
    dist1: (x,y) => x==y and 0 or 1
 
+-- This is [Aha's distance calculation](refs#Aha91) for symbols. 
 -- ## bayes
 
    like: (x,prior,my) => ((@seen[x] or 0) + prior*my.m) / (@n + my.m)
 
+-- Suppose `x` has been `seen` so many times within a population of `@n` samples,
+-- In that case, `x` is "liked" at probability `seen/@n`.
+--
+-- In one special case, we have to do a little more.
+-- To handle low frequency observations,
+-- [Yang](refs#Yang02) (in section three) advocates a `k` kludge (typically, `k`=1)
+-- which combines the `prior` probability with   the `k` fudge factor .
+-- Note that as `seen` and/or `@n` gets large then
+-- this kludge has a vanishingly small effect.
 -- ## discretization
 
    simpler: (j) =>
