@@ -56,6 +56,10 @@ Also,  in one special case, we have to do a little more:
 which combines the `prior` probability with   the `k` fudge factor .
 - Note that as `seen` and/or `@n` gets large then
 this kludge has a vanishingly small effect.
+
+```moonscript
+```
+
 ## discretization
 
 ```moonscript

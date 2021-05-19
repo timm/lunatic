@@ -42,6 +42,7 @@ class Sym extends Col
 -- which combines the `prior` probability with   the `k` fudge factor .
 -- - Note that as `seen` and/or `@n` gets large then
 -- this kludge has a vanishingly small effect.
+
 -- ## discretization
 
    simpler: (j) =>
