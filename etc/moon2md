@@ -35,5 +35,5 @@ for f in *.moon;do
   g=${f%.moon}
   doc $f > ../docs/${g}.md
   what=`about $f`
-  echo  "&nbsp;&nbsp; &#9679; <a href=\"$g\">$g</a>: $what<br>" >> $2/localtoc.html
+  echo  "<li><a href=\"$g\">$g</a>: $what</li>" >> $2/localtoc.html
 done

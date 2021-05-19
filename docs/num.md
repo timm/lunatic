@@ -74,7 +74,7 @@ them to the same 0..1 range.
 ```
 
 The closer `x` gets to the mean `@mu`, the more we believe it.
-But if we are too far from the mean (more that four standard 
+Conversely, if we are too far from the mean (more that four standard 
 deviations) then we do not believe it at all.
 ## exports
 
