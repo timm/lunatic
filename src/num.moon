@@ -19,7 +19,7 @@ class Num extends Col
     @lo  = x if x < @lo
     @hi  = x if x > @hi
 
--- This is ?Knuth's incremental calculator for computing standard
+-- This is [Welford's incremental calculator](refs@Welford62) for computing standard
 -- deviation and mean.  The current mean is wrong by some delta
 -- `d` so, each time we see a number, we update `@mu` by that error amount.
 -- But we acquire more information, and `@n` increases,
