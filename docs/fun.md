@@ -37,7 +37,7 @@ class Rand
   park_miller_randomizer: =>
     @seed = (@multipler * @seed) % @modulus -- cycle=2,147,483,646
     @seed / @modulus 
-  any: (lo=0,hi=1) => lo + (hi-lo)*@\park_miller_randomizer!
+  any: (lo=0, hi=1) => lo + (hi-lo)*@\park_miller_randomizer!
 ```
 
 ## Meta functions
@@ -55,8 +55,11 @@ on the command like to decide which to run.
 otherwise, run all.
 
 ```moonscript
+sorted=nil
 cli= (t) ->
-  run = (x) -> print("-- "..x) or t[x]()
+  run = (x) -> 
+    print("-- ", x) 
+    t[x]()
   a = sorted [x for x,_ in pairs t]
   if s = arg[1]
     if s=="?" [print(" - #{x}") for x in *a]
@@ -103,7 +106,7 @@ fmtln= (...) -> print(fmt(...))
 Shorthand for table.cocat
 
 ```moonscript
-cat= (a, sep=",") -> table.concat(a,sep)
+cat= (a, sep=", ") -> table.concat(a,sep)
 ```
 
 ### say
@@ -135,5 +138,5 @@ said= (x) -> print(say(x))
 
 ```moonscript
 {:csv, :Rand, :same, :cli, :sum, :sorted,
- :fmt, :fmtln, :cat, :say, :said}
+ :fmt, :fmtln, :cat, :say, :said }
 ```

@@ -3,17 +3,10 @@ title: "col.moon"
 ---
 
 
-Tools for summarizing data.
-
-```moonscript
-require "fun"
-is=require "is"
-```
-
-## Col
 Generic stuff for all columns.
 
 ```moonscript
+import is from require "is"
 class Col
   new: (at=1,txt='') => 
     @at, @txt, @w = at, txt, is.weighted(txt)

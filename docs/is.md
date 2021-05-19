@@ -17,5 +17,5 @@ is.y       = (s)-> s\find"+" or s\find"-" or is.klass s
 Returns...
 
 ```moonscript
-is
+:is
 ```
