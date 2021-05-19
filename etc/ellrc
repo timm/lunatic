@@ -19,6 +19,11 @@ aliases() {
 aliases $Ell/src
 aliases $Ell/test
 
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 alias gp="git add *;git commit -am save;git push;git status"
 alias ls="ls -G"
 alias tmux="tmux -f $Ell/etc/tmux-conf "

@@ -61,7 +61,7 @@ class Num extends Col
     num / (denom + 1E-64)
 
 -- The closer `x` gets to the mean `@mu`, the more we believe it.
--- But if we are too far from the mean (more that four standard 
+-- Conversely, if we are too far from the mean (more that four standard 
 -- deviations) then we do not believe it at all.
 -- ## exports
 :Num
