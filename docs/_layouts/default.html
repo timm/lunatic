@@ -12,9 +12,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
   <style>
+  header::-webkit-scrollbar {
+    display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    header{
+      -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        }
   header {
     overflow:scroll;
-    overflow:auto;
+    overflow:hidden;
     height:  100%;
   }
   code {
