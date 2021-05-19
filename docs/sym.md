@@ -27,9 +27,11 @@ class Sym extends Col
 ```moonscript
    mid:    => @mode
    spread: => @\ent!
-   ent:    => sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
+   ent:    => 
+     sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
    report: (w=20,r=1) =>
-     fmt("%#{w}s : %s (%s)",@txt,cat(sorted[k for k,_ in pairs @all]),@mode)
+     how="%#{w}s : %s (%s)"
+     fmt(how, @txt, cat(sorted[k for k,_ in pairs @all]),@mode)
 ```
 
 ## distance 
@@ -43,12 +45,11 @@ This is [Aha's distance calculation](refs#Aha91) for symbols.
 ## bayes
 
 ```moonscript
-   like: (x,prior,my) => ((@seen[x] or 0) + prior*my.m) / (@n + my.m)
+   like: (x,prior,my) => ((@seen[x] or 0)+prior*my.m) / (@n+my.m)
 ```
 
 Suppose `x` has been `seen` so many times within a population of `@n` samples,
 In that case, `x` is "liked" at probability `seen/@n`.
---
 In one special case, we have to do a little more.
 To handle low frequency observations,
 [Yang](refs#Yang02) (in section three) advocates a `k` kludge (typically, `k`=1)
