@@ -1,5 +1,4 @@
-remote_theme: pmarsceill/just-the-docs
-#theme: jekyll-theme-minimal
-#title: Lunatic
-#description: "Exploring space, one data set at a time (using data mining and optimization)"
-#logo: /assets/img/moon.png 
+theme: jekyll-theme-minimal
+title: Lunatic
+description: "Exploring space, one data set at a time (using data mining and optimization)"
+logo: /assets/img/moon.png 
