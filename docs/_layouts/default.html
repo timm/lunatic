@@ -12,15 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
   <style>
-  header::-webkit-scrollbar {
-    display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    header {
-      -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        }
   code {
      font-size: .8em;
   }
@@ -91,11 +82,6 @@
         </ul>
         {% endif %}
         
-        <p><b>Contents:</b><br>
-
-           {% include localtoc.html %}
-        
-        </p>
       </header>
       <section>
    
@@ -105,6 +91,9 @@
    <a href="guide"><button type="button" name="button" class="btn">doc</button></a>
    <a href="guide"><button type="button" name="button" class="btn">discuss</button></a>
    <a href="guide"><button type="button" name="button" class="btn">license</button></a>
+   <detaols><summary>site  map> 
+           {% include localtoc.html %}
+   </dettails>
    </span>
    </p>
 
