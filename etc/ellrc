@@ -6,12 +6,6 @@ mkdir -p $Ell/etc
 mkdir -p $Ell/src
 mkdir -p $Ell/test
 
-alias gp="git add *;git commit -am save;git push;git status"
-alias ls="ls -G"
-alias tmux="tmux -f $Ell/etc/tmux-conf "
-alias vi="vim -u $Ell/etc/vimrc "
-alias vims="vim +PluginInstall +qall"         
-
 docs()    { $Ell/etc/moon2md $Ell/src $Ell/docs/_includes; }
 here()    { cd $1; basename `pwd`; }
 aliases() {
@@ -25,8 +19,15 @@ aliases() {
 aliases $Ell/src
 aliases $Ell/test
 
+alias gp="git add *;git commit -am save;git push;git status"
+alias ls="ls -G"
+alias tmux="tmux -f $Ell/etc/tmux-conf "
+alias vi="vim -u $Ell/etc/vimrc "
+alias vims="vim +PluginInstall +qall"         
+
 PROMPT_COMMAND='echo -ne "🌛 $(git branch 2>/dev/null | grep '^*' | colrm 1 2):";PS1="$(here ..)/$(here .):\!\e[m ▶ "'
 
 tput bold; tput setaf 241
-alias | sed 's/alias //'
+echo "Short cuts:"
+alias | sed 's/alias /  /'
 tput sgr0

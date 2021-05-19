@@ -85,23 +85,19 @@
       </header>
       <section>
    
-   <details><summary>
-   <span class="fs-3">
+   <p><span class="fs-3">
    <a href="guide"><button type="button" name="button" class="btn">home</button></a>
    <a href="guide"><button type="button" name="button" class="btn">install</button></a>
    <a href="guide"><button type="button" name="button" class="btn">doc</button></a>
    <a href="guide"><button type="button" name="button" class="btn">discuss</button></a>
    <a href="guide"><button type="button" name="button" class="btn">license</button></a>
-   site map  &rarr; </span></summary>
-      {% include localtoc.html %} 
-   </details>
-<hr>
-      <h1>{{page.title}}</h1>
+   site map  &rarr; </span>
+   <p>
+   <details><summary>Site map</summary> {% include localtoc.html %} </details>
+   <hr>
+  <h1>{{page.title}}</h1>
 
-   <details>
-      <summary>TOC<br></summary>
-      {% include toc.html html=content %}
-    </details>
+   <details> <summary>TOC<br></summary> {% include toc.html html=content %} <hr></details>
 
 
       {{content}}
