@@ -40,9 +40,9 @@ class Sym extends Col
 -- - To handle low frequency observations,
 -- [Yang](refs#Yang02) (in section three) advocate a `k` kludge (typically, `k`=1)
 -- which combines the `prior` probability with   the `k` fudge factor .
--- - Note that as `seen` and/or `@n` gets large then
+--
+-- Note that as `seen` and/or `@n` gets large then
 -- this kludge has a vanishingly small effect.
-
 -- ## discretization
 
    simpler: (j) =>
