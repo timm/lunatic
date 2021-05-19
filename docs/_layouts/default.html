@@ -45,12 +45,6 @@
     color: white;
     background-color: rgb(50,40,80);
   }
-   details > summary {
-     list-style: none;
-     }
-     details > summary::marker {
-       display: none;
-       }
     </style>
   </head>
   <body>
@@ -98,7 +92,7 @@
    <a href="guide"><button type="button" name="button" class="btn">doc</button></a>
    <a href="guide"><button type="button" name="button" class="btn">discuss</button></a>
    <a href="guide"><button type="button" name="button" class="btn">license</button></a>
-   &#9654; site map  </span></summary>
+   site map  &rarr; </span></summary>
            {% include localtoc.html %}
            <hr>
    </details>
@@ -106,7 +100,7 @@
       <h1><br>{{page.title}}</h1>
 
    <details>
-      <summary>&#9654; TOC<br></summary>
+      <summary>TOC<br></summary>
       {% include toc.html html=content %}
       <hr>
     </details>
