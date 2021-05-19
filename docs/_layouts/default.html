@@ -45,6 +45,9 @@
     color: white;
     background-color: rgb(50,40,80);
   }
+  details summary::-webkit-details-marker {
+    display:none;
+    }
     </style>
   </head>
   <body>
@@ -92,7 +95,7 @@
    <a href="guide"><button type="button" name="button" class="btn">doc</button></a>
    <a href="guide"><button type="button" name="button" class="btn">discuss</button></a>
    <a href="guide"><button type="button" name="button" class="btn">license</button></a>
-   site map &raquo; </span></summary>
+   &#9654; site map  </span></summary>
            {% include localtoc.html %}
    </details>
    <hr>
@@ -100,7 +103,7 @@
       <h1>{{page.title}}</h1>
 
    <details>
-      <summary>TOC<br></summary>
+      <summary>&#9654; TOC<br></summary>
       {% include toc.html html=content %}
       <hr>
     </details>
