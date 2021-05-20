@@ -3,7 +3,7 @@
 
 package.moonpath = '../src/?.moon;' .. package.moonpath
 import cli from require "fun"
-import Sym from require "sym""
+import Sym from require "sym"
 
 eg={}
 eg.sym = ->

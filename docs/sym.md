@@ -27,7 +27,7 @@ class Sym extends Col
 ```moonscript
    mid:    => @mode
    spread: => @\ent!
-   ent:    => 
+   ent:    =>
      sum [-v/@n*math.log(v/@n)/math.log(2) for _,v in pairs @all]
    report: (w=20,r=1) =>
      how="%#{w}s : %s (%s)"

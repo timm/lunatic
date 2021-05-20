@@ -4,7 +4,11 @@ title: "fun.moon"
 
 
 Misc utilities.
-All this code get loaded into the global space
+
+```moonscript
+moon  = require "moon"
+```
+
 ## File utils
 ### Csv
 Read a comma operated file, kill space and comments,
@@ -55,10 +59,11 @@ on the command like to decide which to run.
 otherwise, run all.
 
 ```moonscript
+colors={}
 sorted=nil
 cli= (t) ->
   run = (x) -> 
-    print("-- ", x) 
+    print colors.fmt {green: "-- ".. x} 
     t[x]()
   a = sorted [x for x,_ in pairs t]
   if s = arg[1]
@@ -75,8 +80,8 @@ Arrays have  indexes `1...max`.
 
 ```moonscript
 sum= (a,filter=same, s=0) ->
-  for x in *a do s += filter(x)
-  s
+   for x in *a do s += filter(x)
+   s
 ```
 
 ## Table Utils
@@ -132,6 +137,28 @@ Print a table, as a string
 
 ```moonscript
 said= (x) -> print(say(x))
+```
+
+### colors
+
+```moonscript
+colors = 
+  nc:      "[0m" -- No Color
+  bold:    "[1m" -- Bold
+  black:   "[0;30m"
+  gray:    "[1;30m"
+  red:     "[0;31m"
+  green:   "[0;32m"
+  yellow:  "[0;33m"
+  blue:    "[0;34m"
+  magenta: "[0;35m"
+  cyan:    "[0;36m"
+  white:   "[0;37m"
+colors.fmt = (t) ->
+  e  = string.char 27
+  b  = "#{e}#{colors.bold}"
+  for c,s in pairs t
+    return "#{e}#{colors[c]}#{b}#{s}#{e}#{colors.nc}"
 ```
 
 ## Exports

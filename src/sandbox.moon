@@ -1,5 +1,6 @@
 -- vim: ts=2 sw=2 et :
 
+-- Place for random code experiment.
 moon=require("moon")
 p=moon.p
 

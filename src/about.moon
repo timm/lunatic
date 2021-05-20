@@ -26,18 +26,19 @@ class About
       print "  -#{k}#{s1} #{d}#{s2} #{h}"
     print "\n#{@@what}\n#{@@which}\n#{@@copyright}\n\nOptions:"
     t= @@defaults
-    help "h",""."show help"
+    help "h","","show help"
     for k in *sorted [k for k,_ in pairs t] do help k,t[k][1],t[k][2]
-  addCommandLineSettings: (      i=0)=>
-    while i < #arg
+  update: (a,      i=0)=>
+    a= [tonumber(x) or x for x  in  *a]
+    while i < #a
       i   += 1
-      flag = arg[i]\gsub("^-","")
+      flag = a[i]\gsub("^-","")
       if @all[flag]
         i += 1
-        @all[flag] = tonumber(arg[i]) or arg[i]
+        @all[flag] = a[i]
       elseif k=="h" @\showHelp! 
       else          print "?? '#{flag}' unknown"
     @all
 
 --  --------------------------
-About!\addCommandLineSettings!
+About!\update arg
