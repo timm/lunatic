@@ -16,6 +16,8 @@ class Sym extends Col
      @most,@mode = @all[x],x if @all[x] > @most
 
 -- ## reporting 
+-- Just so we can reason about `Num` and `Sym` in the same way,
+-- `mid`, `spread`, and `report` are defined for both classes
    mid:    => @mode
    spread: => @\ent!
    ent:    =>

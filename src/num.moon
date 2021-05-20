@@ -25,11 +25,12 @@ class Num extends Col
 -- And as we acquire more information, and `@n` increases,
 -- we trend towards ignoring that delta (see the `d/@n` calculation).
 -- ## reporting 
-
+-- Just so we can reason about `Num` and `Sym` in the same way,
+-- `mid`, `spread`, and `report` are defined for both classes
   mid:               => @mu
   spread:            => @sd
   report: (w=20,r=1) =>
-    fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mu)
+    fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mid!)
 
 -- ## distance 
 

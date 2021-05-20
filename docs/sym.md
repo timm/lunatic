@@ -23,6 +23,8 @@ class Sym extends Col
 ```
 
 ## reporting 
+Just so we can reason about `Num` and `Sym` in the same way,
+`mid`, `spread`, and `report` are defined for both classes
 
 ```moonscript
    mid:    => @mode

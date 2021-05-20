@@ -32,12 +32,14 @@ deviation and mean.   It assumes that current mean is wrong by some delta
 And as we acquire more information, and `@n` increases,
 we trend towards ignoring that delta (see the `d/@n` calculation).
 ## reporting 
+Just so we can reason about `Num` and `Sym` in the same way,
+`mid`, `spread`, and `report` are defined for both classes
 
 ```moonscript
   mid:               => @mu
   spread:            => @sd
   report: (w=20,r=1) =>
-    fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mu)
+    fmt("%#{w}s : %.#{r}f..%.#{r}f (%.#{r}f)",@txt,@lo,@hi,@mid!)
 ```
 
 ## distance 
@@ -63,13 +65,13 @@ them to the same 0..1 range.
 ## bayes
 
 ```moonscript
-  like: (i,x,_) =>
+  like: (x,_,_) =>
     return 0 if x < @mu - 4*@sd 
     return 0 if x > @mu + 4*@sd 
     e     = 2.718282
     var   = @sd^2
     denom = (math.pi * 2 * var) ^ .5
-    num   = e ^ (-(x - i.mu)^2 / (2 * var + 0.0001))
+    num   = e ^ (-(x - @mu)^2 / (2 * var + 0.0001))
     num / (denom + 1E-64)
 ```
 
