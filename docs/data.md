@@ -53,8 +53,7 @@ class Data
     out
 ```
 
-## Exports
-Just the stuff anyone else might need.
+## exports
 
 ```moonscript
 :Data, :Cols

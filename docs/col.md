@@ -39,7 +39,7 @@ class Skip extends Col
   report: (w=20,r=1) => fmt("%#{x}s : ...",@txt)
 ```
 
-## Exports
+## exports
 
 ```moonscript
 :Col, :Skip

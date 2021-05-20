@@ -42,6 +42,5 @@ class Data
     [out\add x for x in *a]
     out
 
--- ## Exports
--- Just the stuff anyone else might need.
+-- ## exports
 :Data, :Cols

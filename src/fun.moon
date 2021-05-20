@@ -124,6 +124,6 @@ colors.fmt = (t) ->
   for c,s in pairs t
     return "#{e}#{colors[c]}#{b}#{s}#{e}#{colors.nc}"
 
--- ## Exports
+-- ## exports
 {:csv, :Rand, :same, :cli, :sum, :sorted,
  :fmt, :fmtln, :cat, :say, :said }

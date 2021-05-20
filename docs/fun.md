@@ -161,7 +161,7 @@ colors.fmt = (t) ->
     return "#{e}#{colors[c]}#{b}#{s}#{e}#{colors.nc}"
 ```
 
-## Exports
+## exports
 
 ```moonscript
 {:csv, :Rand, :same, :cli, :sum, :sorted,
