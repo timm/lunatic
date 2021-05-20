@@ -8,6 +8,7 @@ import Rand, sorted from require "fun"
 class About
   @what      = "./lunatic.moon [options]"
   @which     = "Data mining, optimizers, via constrast set learning"
+  @version   = 0.2
   @copyright = "(c) 2021 Tim Menzies, timm@ieee.org"
   @default   =
     dir:   {"../etc/data/", "where to find data"}
@@ -19,25 +20,26 @@ class About
     size:  {.5,             "min cluster size control"}
     some:  {1024,           "sub-sampling control"}
 -- -------------------------------------------------------
-  new: => @all = {k,v[1] for k,v in pairs @@default}
-  showHelps: (width1=10,width2=15) =>
+  new: => 
+    @all = {k,v[1] for k,v in pairs @@default}
+  showHelp: (a, width1=10,width2=15) =>
     help = (k,d,h) ->
       s1,s2 = " "\rep(width1-#k), " "\rep(width2-#tostring(d))
       print "  -#{k}#{s1} #{d}#{s2} #{h}"
-    print "\n#{@@what}\n#{@@which}\n#{@@copyright}\n\nOptions:"
-    t= @@defaults
+    print "\n#{@@what}\n#{@@which}"
+    print "version #{@@version}, #{@@copyright}\n\nOptions:"
     help "h","","show help"
-    for k in *sorted [k for k,_ in pairs t] do help k,t[k][1],t[k][2]
-  update: (a,      i=0)=>
-    a= [tonumber(x) or x for x  in  *a]
-    while i < #a
+    for k in *sorted [k for k,_ in pairs a]
+      help k,a[k][1],a[k][2]
+  update: (arg,      i=0)=>
+    while i < #arg
       i   += 1
-      flag = a[i]\gsub("^-","")
+      flag = arg[i]\gsub("^-","")
       if @all[flag]
         i += 1
-        @all[flag] = a[i]
-      elseif k=="h" @\showHelp! 
-      else          print "?? '#{flag}' unknown"
+        @all[flag] = tonumber(arg[i+1]) or arg[i+1] 
+      elseif flag=="h" @\showHelp @@default
+      else             print "?? '#{flag}' unknown"
     @all
 
 --  --------------------------

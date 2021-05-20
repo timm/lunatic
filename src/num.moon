@@ -51,13 +51,13 @@ class Num extends Col
 -- them to the same 0..1 range.
 -- ## bayes
 
-  like: (i,x,_) =>
+  like: (x,_,_) =>
     return 0 if x < @mu - 4*@sd 
     return 0 if x > @mu + 4*@sd 
     e     = 2.718282
     var   = @sd^2
     denom = (math.pi * 2 * var) ^ .5
-    num   = e ^ (-(x - i.mu)^2 / (2 * var + 0.0001))
+    num   = e ^ (-(x - @mu)^2 / (2 * var + 0.0001))
     num / (denom + 1E-64)
 
 -- The closer `x` gets to the mean `@mu`, the more we believe it.
